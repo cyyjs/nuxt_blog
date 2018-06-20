@@ -1,5 +1,5 @@
 import axios from 'axios'
 
 export default axios.create({
-  baseURL: 'http://api.alibt.top/'
+  baseURL: 'http://api.alibt.top'
 })
