@@ -9,7 +9,7 @@
       "autorestart": true,
       "node_args": [],
       "args": "start",
-      "env": {}
+      "env": { "baseUrl": "127.0.0.1:8003" }
     }
   ]
 }
