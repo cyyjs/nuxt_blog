@@ -18,10 +18,9 @@ export default {
     components: {
         BackTop
     },
-    async asyncData({ env, route, error }) {
-        let baseUrl = env.baseUrl
+    async asyncData({ route, error }) {
         let { data: { data } } = await axios.get(
-            baseUrl + '/blog/post/' + route.params.id
+            '/blog/post/' + route.params.id
         )
         if (!data._id) {
             error({ statusCode: 404 })

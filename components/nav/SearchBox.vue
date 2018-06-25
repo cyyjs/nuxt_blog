@@ -28,6 +28,7 @@
 
 <script>
 import axios from '~/plugins/axios'
+let timer = null
 export default {
     data() {
         return {
@@ -52,14 +53,20 @@ export default {
     methods: {
         async change(event) {
             this.query = event.target.value
-            let { data: { data: { data } } } = await axios.get('/blog/post', {
-                params: {
-                    pageNo: 1,
-                    pageSize: 5,
-                    title: this.query
-                }
-            })
-            this.list = data
+            clearTimeout(this.timer)
+            this.timer = setTimeout(async () => {
+                let { data: { data: { data } } } = await axios.get(
+                    '/blog/post',
+                    {
+                        params: {
+                            pageNo: 1,
+                            pageSize: 5,
+                            title: this.query
+                        }
+                    }
+                )
+                this.list = data
+            }, 500)
         },
         onUp() {
             if (this.showSuggestions) {
@@ -80,9 +87,11 @@ export default {
             }
         },
         go(i) {
-            this.$router.push('/blog/' + this.suggestions[i]._id)
-            this.query = ''
-            this.focusIndex = 0
+            if (this.suggestions[i]) {
+                this.$router.push('/blog/' + this.suggestions[i]._id)
+                this.query = ''
+                this.focusIndex = 0
+            }
         },
         focus(i) {
             this.focusIndex = i

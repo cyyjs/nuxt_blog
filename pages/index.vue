@@ -72,6 +72,7 @@ export default {
     justify-content: space-between;
     text-align: left;
     & > .feature {
+        padding-left: 20px;
         flex-grow: 1;
         flex-basis: 30%;
         max-width: 30%;
