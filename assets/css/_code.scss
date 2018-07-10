@@ -1,0 +1,198 @@
+/*
+Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
+*/
+
+.post-content {
+  a {
+    color: #3eaf7c;
+  }
+  p {
+    display: block;
+    margin: 1em 0;
+    line-height: 1.7;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  h2 {
+    font-size: 1.65rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #eaecef;
+    margin-bottom: 1rem;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+code {
+  color: #476582;
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  font-size: 0.85em;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace;
+}
+
+pre,
+pre[class*="language-"] {
+  font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+  position: relative;
+  line-height: 1.4;
+  padding: 1.25rem 1.5rem;
+  margin: 0.85rem 0;
+  background-color: #282c34;
+  border-radius: 6px;
+  overflow: auto;
+  &:before {
+    content: " ";
+    position: absolute;
+    z-index: 3;
+    top: 0.8em;
+    right: 1em;
+    font-size: 0.75rem;
+    color: hsla(0, 0%, 100%, 0.4);
+  }
+  code {
+    color: #fff;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+  }
+}
+
+$lang_list: (
+  javascript,
+  js,
+  typescript,
+  ts,
+  markup,
+  vue,
+  markdown,
+  md,
+  ruby,
+  rb,
+  python,
+  py,
+  bash,
+  sh,
+  css,
+  html,
+  sass,
+  scss,
+  less,
+  stylus,
+  go,
+  java,
+  c,
+  yaml,
+  json
+);
+$lang_map: (
+  javascript: js,
+  typescript: ts,
+  markup: html,
+  vue: html,
+  markdown: md,
+  ruby: rb,
+  python: py,
+  bash: sh
+);
+@function getlang($map, $lang) {
+  @if not map-has-key($map, $lang) {
+    @return "" + $lang;
+  } @else {
+    @return "" + map-get($map, $lang);
+  }
+}
+
+@each $lang in $lang_list {
+  pre[class*="language-#{$lang}"]:before {
+    content: getlang($lang_map, $lang);
+  }
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #23241f;
+}
+
+.hljs,
+.hljs-tag,
+.hljs-subst {
+  color: #f8f8f2;
+}
+
+.hljs-strong,
+.hljs-emphasis {
+  color: #a8a8a2;
+}
+
+.hljs-bullet,
+.hljs-quote,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal,
+.hljs-link {
+  color: #ae81ff;
+}
+
+.hljs-code,
+.hljs-title,
+.hljs-section,
+.hljs-selector-class {
+  color: #a6e22e;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-name,
+.hljs-attr {
+  color: #f92672;
+}
+
+.hljs-symbol,
+.hljs-attribute {
+  color: #66d9ef;
+}
+
+.hljs-params,
+.hljs-class .hljs-title {
+  color: #f8f8f2;
+}
+
+.hljs-string,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-addition,
+.hljs-variable,
+.hljs-template-variable {
+  color: #e6db74;
+}
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: #75715e;
+}
