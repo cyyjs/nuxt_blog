@@ -11,7 +11,7 @@
                 </div>
             </div>
             <div class="list-content">
-                <div class="item-card" v-for="p in page.data" @click="$router.push('/blog/'+p._id)" :key="p._id">
+                <div class="item-card" v-for="p in page.data" @click="openUrl(p._id)" :key="p._id">
                     <h2>{{ p.title }}</h2>
                     <div class="item-body">
                         <div class="item-content">{{p.description}}</div>
@@ -87,6 +87,12 @@ export default {
                 }
             })
             this.page = data
+        },
+        openUrl(id) {
+            const { href } = this.$router.resolve({
+                path: `/blog/${id}`
+            })
+            window.open(href, '_blank')
         }
     }
 }
