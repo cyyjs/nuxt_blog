@@ -38,7 +38,9 @@ export default {
         Pagination
     },
     async asyncData({ env, route, error }) {
-        let { data: { data } } = await axios.get('/blog/post?pageSize=10')
+        let { data: { data } } = await axios.get(
+            '/blog/post?pageSize=10&status=1'
+        )
         let { data: { data: tags } } = await axios.get('/blog/tags')
         if (!data) {
             error()
@@ -80,6 +82,7 @@ export default {
                 params: {
                     pageNo: this.pageNo,
                     pageSize: this.pageSize,
+                    status: 1,
                     tag: this.tag
                 }
             })
