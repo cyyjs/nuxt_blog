@@ -208,7 +208,7 @@ export default {
 
             .list-content {
                 margin-top: 10px;
-
+                width: 100%;
                 .item-card {
                     margin-bottom: 10px;
                 }
