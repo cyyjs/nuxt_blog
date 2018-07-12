@@ -116,7 +116,7 @@ export default {
             background: #fff;
             border-radius: 3px;
             box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             &:hover {
                 box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
                 .item-img {
