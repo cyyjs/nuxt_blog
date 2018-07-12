@@ -19,6 +19,10 @@ a {
   font-weight: 500;
 }
 
+ul {
+  padding: 0;
+}
+
 *,
 *:before,
 *:after {
@@ -289,103 +293,103 @@ pre[class*="language-"] code {
   border-radius: 0;
 }
 
-pre[class*="language-javascript"]:before {
+pre[class~="language-javascript"]:before {
   content: "js";
 }
 
-pre[class*="language-js"]:before {
+pre[class~="language-js"]:before {
   content: "js";
 }
 
-pre[class*="language-typescript"]:before {
+pre[class~="language-typescript"]:before {
   content: "ts";
 }
 
-pre[class*="language-ts"]:before {
+pre[class~="language-ts"]:before {
   content: "ts";
 }
 
-pre[class*="language-markup"]:before {
+pre[class~="language-markup"]:before {
   content: "html";
 }
 
-pre[class*="language-vue"]:before {
+pre[class~="language-vue"]:before {
   content: "html";
 }
 
-pre[class*="language-markdown"]:before {
+pre[class~="language-markdown"]:before {
   content: "md";
 }
 
-pre[class*="language-md"]:before {
+pre[class~="language-md"]:before {
   content: "md";
 }
 
-pre[class*="language-ruby"]:before {
+pre[class~="language-ruby"]:before {
   content: "rb";
 }
 
-pre[class*="language-rb"]:before {
+pre[class~="language-rb"]:before {
   content: "rb";
 }
 
-pre[class*="language-python"]:before {
+pre[class~="language-python"]:before {
   content: "py";
 }
 
-pre[class*="language-py"]:before {
+pre[class~="language-py"]:before {
   content: "py";
 }
 
-pre[class*="language-bash"]:before {
+pre[class~="language-bash"]:before {
   content: "sh";
 }
 
-pre[class*="language-sh"]:before {
+pre[class~="language-sh"]:before {
   content: "sh";
 }
 
-pre[class*="language-css"]:before {
+pre[class~="language-css"]:before {
   content: "css";
 }
 
-pre[class*="language-html"]:before {
+pre[class~="language-html"]:before {
   content: "html";
 }
 
-pre[class*="language-sass"]:before {
+pre[class~="language-sass"]:before {
   content: "sass";
 }
 
-pre[class*="language-scss"]:before {
+pre[class~="language-scss"]:before {
   content: "scss";
 }
 
-pre[class*="language-less"]:before {
+pre[class~="language-less"]:before {
   content: "less";
 }
 
-pre[class*="language-stylus"]:before {
+pre[class~="language-stylus"]:before {
   content: "stylus";
 }
 
-pre[class*="language-go"]:before {
+pre[class~="language-go"]:before {
   content: "go";
 }
 
-pre[class*="language-java"]:before {
+pre[class~="language-java"]:before {
   content: "java";
 }
 
-pre[class*="language-c"]:before {
+pre[class~="language-c"]:before {
   content: "c";
 }
 
-pre[class*="language-yaml"]:before {
+pre[class~="language-yaml"]:before {
   content: "yaml";
 }
 
-pre[class*="language-json"]:before {
+pre[class~="language-json"]:before {
   content: "json";
 }
 

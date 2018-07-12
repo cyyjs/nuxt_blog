@@ -102,13 +102,14 @@ export default {
 .page {
     .page-content {
         margin: 0 auto;
-        padding: 2rem 2.5rem;
+        padding: 1rem 2rem;
         display: flex;
         flex-direction: row-reverse;
         margin-top: 3.6rem;
         .list-content {
             flex-grow: 1;
             width: 620px;
+            margin-right: 240px;
         }
         .item-card {
             cursor: pointer;
@@ -159,6 +160,7 @@ export default {
             }
         }
         .page-right {
+            position: fixed;
             width: 240px;
             margin-left: 20px;
             flex-shrink: 0;
@@ -177,6 +179,8 @@ export default {
                 font-size: 1.1rem;
             }
             ul {
+                max-height: 70vh;
+                overflow: auto;
                 list-style-type: none;
                 padding: 10px;
                 margin: 0;
