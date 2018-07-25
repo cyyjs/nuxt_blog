@@ -39,7 +39,7 @@ export default {
     },
     async asyncData({ env, route, error }) {
         let { data: { data } } = await axios.get(
-            '/blog/post?pageSize=10&status=1'
+            '/blog/post?pageSize=10&status=1&sort=created'
         )
         let { data: { data: tags } } = await axios.get('/blog/tags')
         if (!data) {
@@ -83,6 +83,7 @@ export default {
                     pageNo: this.pageNo,
                     pageSize: this.pageSize,
                     status: 1,
+                    sort: 'created',
                     tag: this.tag
                 }
             })

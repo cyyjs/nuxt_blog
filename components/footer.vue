@@ -3,7 +3,7 @@
     <a href="https://github.com/cyyjs" target="_blank">
         <img src="~assets/img/github.png" alt="" class="github">
     </a>
-    MIT Licensed | Copyright © 2018-present Cyy
+    Copyright © 2018-present Cyy
     </footer>
 </template>
 <style scoped>
