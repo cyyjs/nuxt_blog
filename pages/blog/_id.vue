@@ -23,6 +23,10 @@
                     更多精彩，请关注我的公众号！
                 </p>
             </div>
+            <div class="blog-nav">
+                <a class="prev" :title="prev.title" :href="'/blog/'+prev._id" v-if="prev">{{prev.title}}</a>
+                <a class="next" :title="next.title" :href="'/blog/'+next._id" v-if="next">{{next.title}}</a>
+            </div>
         </div>
         <back-top></back-top>
     </div>
@@ -37,7 +41,7 @@ export default {
     },
     async asyncData({ route, error }) {
         let { data: { data } } = await axios.get(
-            '/blog/post/' + route.params.id
+            '/blog/post/' + route.params.id + '?guide=1'
         )
         if (!data._id) {
             error({ statusCode: 404 })
@@ -49,6 +53,18 @@ export default {
     computed: {
         content() {
             return markdown.render(this.blog.content)
+        },
+        prev() {
+            if (this.blog.link.prev._id) {
+                return this.blog.link.prev
+            }
+            return false
+        },
+        next() {
+            if (this.blog.link.next._id) {
+                return this.blog.link.next
+            }
+            return false
         }
     },
     head() {
@@ -73,6 +89,25 @@ export default {
 <style lang="scss" scoped>
 .wxcode {
     text-align: center;
+}
+.blog-nav {
+    text-align: right;
+    a {
+        max-width: 40%;
+        overflow: hidden;
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .prev {
+        float: left;
+        &::before {
+            content: '← ';
+        }
+    }
+    .next::after {
+        content: ' →';
+    }
 }
 </style>
 

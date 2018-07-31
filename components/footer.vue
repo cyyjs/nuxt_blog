@@ -14,7 +14,6 @@ footer {
     text-align: center;
     color: #4e6e8e;
     margin: auto;
-    margin-top: 10px;
 }
 .github {
     vertical-align: middle;
