@@ -284,6 +284,7 @@ pre[class*='language-'] code {
   overflow: auto;
   display: block;
   padding: 1.25rem 1.5rem;
+  padding-top: 0.5rem;
   color: #fff;
   background-color: transparent;
   border-radius: 0;
