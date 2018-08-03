@@ -42,8 +42,8 @@ module.exports = {
   },
   plugins: [
     '~plugins/mplugin',
-    { src: '~plugins/ga.js', ssr: false },
-    { src: '~plugins/ba.js', ssr: false }
+    { src: '~plugins/statistics.js', ssr: false }
+    // { src: '~plugins/ba.js', ssr: false }
   ],
   build: {
     /*
