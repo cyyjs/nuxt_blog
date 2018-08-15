@@ -1302,6 +1302,10 @@ chownr@^1.0.1:
   version "1.0.1"
   resolved "http://registry.npm.taobao.org/chownr/download/chownr-1.0.1.tgz#e2a75042a9551908bebd25b8523d5f9769d79181"
 
+ci-info@^1.0.0:
+  version "1.3.0"
+  resolved "http://registry.npm.taobao.org/ci-info/download/ci-info-1.3.0.tgz#ea8219b0355a58692b762baf1cdd76ceb4503283"
+
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
   resolved "http://registry.npm.taobao.org/cipher-base/download/cipher-base-1.0.4.tgz#8760e4ecc272f4c363532f926d874aae2c1397de"
@@ -2298,6 +2302,18 @@ execa@^0.7.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
+execa@^0.8.0:
+  version "0.8.0"
+  resolved "http://registry.npm.taobao.org/execa/download/execa-0.8.0.tgz#d8d76bbc1b55217ed190fd6dd49d3c774ecfc8da"
+  dependencies:
+    cross-spawn "^5.0.1"
+    get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
 expand-brackets@^2.1.4:
   version "2.1.4"
   resolved "http://registry.npm.taobao.org/expand-brackets/download/expand-brackets-2.1.4.tgz#b77735e315ce30f6b6eff0f83b04151a22449622"
@@ -3152,6 +3168,12 @@ is-builtin-module@^1.0.0:
   dependencies:
     builtin-modules "^1.0.0"
 
+is-ci@^1.0.10:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/is-ci/download/is-ci-1.1.0.tgz#247e4162e7860cebbdaf30b774d6b0ac7dcfe7a5"
+  dependencies:
+    ci-info "^1.0.0"
+
 is-data-descriptor@^0.1.4:
   version "0.1.4"
   resolved "http://registry.npm.taobao.org/is-data-descriptor/download/is-data-descriptor-0.1.4.tgz#0b5ee648388e2c860282e793f1856fec3f301b56"
@@ -3661,21 +3683,9 @@ markdown-it-for-inline@~0.1.0:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/markdown-it-for-inline/download/markdown-it-for-inline-0.1.1.tgz#435f2316f5b5e68e1450cfa2242f2b8d59adc75f"
 
-markdown-it-highlightjs-external@^1.0.1:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/markdown-it-highlightjs-external/download/markdown-it-highlightjs-external-1.0.1.tgz#8595fd4b0207ec429c93341f996637fa31da2d53"
-
-markdown-it-images-preview@^1.0.0:
-  version "1.0.1"
-  resolved "http://registry.npm.taobao.org/markdown-it-images-preview/download/markdown-it-images-preview-1.0.1.tgz#17d6eb8491cccd2343d4e4419a1abe9ca43c0bbb"
-
 markdown-it-ins@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/markdown-it-ins/download/markdown-it-ins-2.0.0.tgz#a5aa6a30f1e2f71e9497567cfdff40f1fde67483"
-
-markdown-it-katex-external@^1.0.0:
-  version "1.0.0"
-  resolved "http://registry.npm.taobao.org/markdown-it-katex-external/download/markdown-it-katex-external-1.0.0.tgz#78d1786d94df8650e0bea79ffbc0b1f03fd7c606"
 
 markdown-it-mark@^2.0.0:
   version "2.0.0"
@@ -4072,6 +4082,10 @@ normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
     is-builtin-module "^1.0.0"
     semver "2 || 3 || 4 || 5"
     validate-npm-package-license "^3.0.1"
+
+normalize-path@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/normalize-path/download/normalize-path-1.0.0.tgz#32d0e472f91ff345701c15a8311018d3b0a90379"
 
 normalize-path@^2.1.1:
   version "2.1.1"
@@ -6012,6 +6026,10 @@ strip-indent@^1.0.1:
   dependencies:
     get-stdin "^4.0.1"
 
+strip-indent@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/strip-indent/download/strip-indent-2.0.0.tgz#5ef8db295d01e6ed6cbf7aab96998d7822527b68"
+
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "http://registry.npm.taobao.org/strip-json-comments/download/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
@@ -6752,3 +6770,12 @@ yargs@~3.10.0:
     cliui "^2.1.0"
     decamelize "^1.0.0"
     window-size "0.1.0"
+
+yorkie@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/yorkie/download/yorkie-2.0.0.tgz#92411912d435214e12c51c2ae1093e54b6bb83d9"
+  dependencies:
+    execa "^0.8.0"
+    is-ci "^1.0.10"
+    normalize-path "^1.0.0"
+    strip-indent "^2.0.0"
