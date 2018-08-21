@@ -27,8 +27,8 @@
                 <a class="prev" :title="prev.title" :href="'/blog/'+prev._id" v-if="prev">{{prev.title}}</a>
                 <a class="next" :title="next.title" :href="'/blog/'+next._id" v-if="next">{{next.title}}</a>
             </div>
+            <div id="comment"></div>
         </div>
-        <div id="comment"></div>
         <back-top></back-top>
     </div>
 </template>
