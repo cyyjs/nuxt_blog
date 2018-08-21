@@ -28,6 +28,7 @@
                 <a class="next" :title="next.title" :href="'/blog/'+next._id" v-if="next">{{next.title}}</a>
             </div>
         </div>
+        <div id="comment"></div>
         <back-top></back-top>
     </div>
 </template>
@@ -35,6 +36,20 @@
 import BackTop from '~/components/BackTop'
 import axios from '~/plugins/axios'
 import markdown from '~/plugins/md'
+import Gitment from 'gitment'
+import '~/assets/css/gitment.css'
+const CommentTheme = {
+    render(state, instance) {
+        const container = document.createElement('div')
+        container.lang = 'en-US'
+        container.className = 'gitment-container gitment-root-container'
+        container.appendChild(instance.renderHeader(state, instance))
+        container.appendChild(instance.renderEditor(state, instance))
+        container.appendChild(instance.renderComments(state, instance))
+        container.appendChild(instance.renderFooter(state, instance))
+        return container
+    }
+}
 export default {
     components: {
         BackTop
@@ -83,6 +98,18 @@ export default {
                 }
             ]
         }
+    },
+    mounted() {
+        new Gitment({
+            id: this.blog._id, // 可选。默认为 location.href
+            owner: 'cyyjs',
+            repo: 'blog_comment',
+            oauth: {
+                client_id: 'ac10f3c942ffb50e2d9b',
+                client_secret: 'be6b45d2000cb68ce4ecc23f3d34eb4737091e4f'
+            },
+            theme: CommentTheme
+        }).render('comment')
     }
 }
 </script>

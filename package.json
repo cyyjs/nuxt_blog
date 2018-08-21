@@ -5,7 +5,7 @@
     "author": "cyy <cyy0418@qq.com>",
     "private": true,
     "scripts": {
-        "dev": "HOST=0.0.0.0 nuxt",
+        "dev": "HOST=0.0.0.0 BASE_URL=http://0.0.0.0:8003 nuxt",
         "build": "nuxt build",
         "start": "nuxt start",
         "generate": "nuxt generate",
@@ -14,6 +14,7 @@
     },
     "dependencies": {
         "axios": "^0.18.0",
+        "gitment": "0.0.3",
         "highlight.js": "^9.11.0",
         "markdown-it": "^8.4.1",
         "markdown-it-abbr": "^1.0.4",
