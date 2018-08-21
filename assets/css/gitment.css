@@ -141,7 +141,7 @@ a.gitment-header-issue-link:hover {
 .gitment-editor-main {
     position: relative;
     border: 1px solid #CFD8DC;
-    border-radius: 0;
+    border-radius: 5px;
 }
 
 .gitment-editor-main::before,
@@ -220,6 +220,7 @@ a.gitment-comment-name:visited {
     color: #333;
     background-color: #fff;
     border-color: #CFD8DC;
+    border-top-left-radius: 5px;
 }
 
 .gitment-editor-login {
@@ -313,7 +314,7 @@ a.gitment-editor-logout-link:hover {
     color: #333;
     vertical-align: middle;
     border: none;
-    border-radius: 0;
+    border-radius: 5px;
     outline: none;
     box-shadow: none;
     overflow: visible;
@@ -401,6 +402,7 @@ a.gitment-editor-footer-tip:hover {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+    border-radius: 5px;
 }
 
 .gitment-editor-submit:hover,

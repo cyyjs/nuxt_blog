@@ -6,7 +6,7 @@
     "img/logo.ee5895c.png",
     "img/qrcode.6cbc81b.jpg",
     "img/404.a1ec89f.svg",
-    "pages/blog/_id.69ecebed46e287b681ac.js",
+    "pages/blog/_id.2a22b314f863500ed8f8.js",
     "layouts/default.b4fb56aff5ba5672932b.js",
     "pages/blog/index.8c75c7061cf26fb80f76.js",
     "pages/favorite/index.f9014e448fc17ad7a95e.js",
@@ -15,19 +15,19 @@
     "layouts/blog.0e353cd79c0deca182e2.js",
     "vendor.4d90a9bc794613dd480f.js",
     "app.d32f72dc63ede8089f3a.js",
-    "manifest.0a31584ae8d158a7d2b1.js",
+    "manifest.23d35450d424cfa9c082.js",
     "LICENSES",
     "index.spa.html",
     "index.ssr.html"
   ],
   "initial": [
-    "manifest.0a31584ae8d158a7d2b1.js",
+    "manifest.23d35450d424cfa9c082.js",
     "vendor.4d90a9bc794613dd480f.js",
     "app.d32f72dc63ede8089f3a.js"
   ],
   "async": [
     "pages/index.a888649b908669ba8728.js",
-    "pages/blog/_id.69ecebed46e287b681ac.js",
+    "pages/blog/_id.2a22b314f863500ed8f8.js",
     "layouts/default.b4fb56aff5ba5672932b.js",
     "pages/blog/index.8c75c7061cf26fb80f76.js",
     "pages/favorite/index.f9014e448fc17ad7a95e.js",
