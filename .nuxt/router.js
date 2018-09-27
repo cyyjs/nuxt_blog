@@ -1,14 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-Vue.use(Router)
-
 const _00ca55e5 = () => import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */).then(m => m.default || m)
 const _7e5ffcfd = () => import('../pages/about.vue' /* webpackChunkName: "pages/about" */).then(m => m.default || m)
 const _acdfa942 = () => import('../pages/favorite/index.vue' /* webpackChunkName: "pages/favorite/index" */).then(m => m.default || m)
 const _2a4e8d8d = () => import('../pages/blog/_id.vue' /* webpackChunkName: "pages/blog/_id" */).then(m => m.default || m)
 const _c3d0507c = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
 
+Vue.use(Router)
 
 
 if (process.client) {
@@ -33,7 +32,7 @@ const scrollBehavior = function (to, from, savedPosition) {
     position = savedPosition
   }
 
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     // wait for the out transition to complete (if necessary)
     window.$nuxt.$once('triggerScroll', () => {
       // coords will be used if no selector is provided,
