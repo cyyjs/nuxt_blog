@@ -1,4 +1,3 @@
-import 'es6-promise/auto'
 import Vue from 'vue'
 import Meta from 'vue-meta'
 import { createRouter } from './router.js'
@@ -39,7 +38,7 @@ Vue.use(Meta, {
 const defaultTransition = {"name":"page","mode":"out-in","appear":false,"appearClass":"appear","appearActiveClass":"appear-active","appearToClass":"appear-to"}
 
 async function createApp (ssrContext) {
-  const router = createRouter(ssrContext)
+  const router = await createRouter(ssrContext)
 
   
 
@@ -137,7 +136,7 @@ async function createApp (ssrContext) {
   
   if (typeof nuxt_plugin_mplugin_29e1d229 === 'function') await nuxt_plugin_mplugin_29e1d229(app.context, inject)
   
-  if (process.browser) { 
+  if (process.client) { 
     if (typeof nuxt_plugin_statistics_5be65f7d === 'function') await nuxt_plugin_statistics_5be65f7d(app.context, inject)
   }
 

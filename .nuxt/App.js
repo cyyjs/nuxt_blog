@@ -4,15 +4,12 @@ import NuxtLoading from './components/nuxt-loading.vue'
 import '../assets/css/main.scss'
 
 
-let layouts = {
+import _2d21d098 from '../layouts/blog.vue'
+import _6f6c098b from '../layouts/default.vue'
 
-  "_blog": () => import('../layouts/blog.vue'  /* webpackChunkName: "layouts/blog" */).then(m => m.default || m),
+const layouts = { "_blog": _2d21d098,"_default": _6f6c098b }
 
-  "_default": () => import('../layouts/default.vue'  /* webpackChunkName: "layouts/default" */).then(m => m.default || m)
 
-}
-
-let resolvedLayouts = {}
 
 export default {
   head: {"title":"cyy blog","titleTemplate":"%s - Cyy's Blog","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1, user-scalable=no"},{"http-equiv":"cleartype","content":"on"},{"http-equiv":"Cache-Control"},{"hid":"keywords","name":"keywords","content":"cyy,博客,前端,JavaScript, Node, Vue,nuxt"},{"name":"author","content":"cyy6543@gmail.com"},{"hid":"description","name":"description","content":"Cyy的个人博客，技术分享"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
@@ -76,34 +73,24 @@ export default {
       }
     },
     
-    setLayout (layout) {
-      if (!layout || !resolvedLayouts['_' + layout]) layout = 'default'
+    
+    setLayout(layout) {
+      if (!layout || !layouts['_' + layout]) {
+        layout = 'default'
+      }
       this.layoutName = layout
-      let _layout = '_' + layout
-      this.layout = resolvedLayouts[_layout]
+      this.layout = layouts['_' + layout]
       return this.layout
     },
-    loadLayout (layout) {
-      if (!layout || !(layouts['_' + layout] || resolvedLayouts['_' + layout])) layout = 'default'
-      let _layout = '_' + layout
-      if (resolvedLayouts[_layout]) {
-        return Promise.resolve(resolvedLayouts[_layout])
+    loadLayout(layout) {
+      if (!layout || !layouts['_' + layout]) {
+        layout = 'default'
       }
-      return layouts[_layout]()
-      .then((Component) => {
-        resolvedLayouts[_layout] = Component
-        delete layouts[_layout]
-        return resolvedLayouts[_layout]
-      })
-      .catch((e) => {
-        if (this.$nuxt) {
-          return this.$nuxt.error({ statusCode: 500, message: e.message })
-        }
-      })
+      return Promise.resolve(layouts['_' + layout])
     }
+    
   },
   components: {
     NuxtLoading
   }
 }
-

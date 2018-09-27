@@ -2,6 +2,7 @@
   <div class="search-box">
     <input
       @input="change"
+      placeholder="搜索..."
       aria-label="Search"
       :value="query"
       autocomplete="off"
