@@ -259,6 +259,28 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   max-width: 100%;
 }
 
+.post-content table {
+  border-collapse: collapse;
+  border: 1px solid #eee;
+}
+
+.post-content table th,
+.post-content table td {
+  padding: 5px 10px;
+  min-width: 100px;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+
+.post-content table tr:last-child > td {
+  border-bottom: 0;
+}
+
+.post-content table tr > td:last-child,
+.post-content table tr > th:last-child {
+  border-right: 0;
+}
+
 code {
   color: #476582;
   padding: 0.25rem 0.5rem;
