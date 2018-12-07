@@ -1,20 +1,17 @@
 
-let files = require.context('@/middleware', false, /^\.\/(?!-)[^.]+\.(mjs|js)$/)
-let filenames = files.keys()
+const files = require.context('@/middleware', false, /^\.\/(?!-)[^.]+\.(js|mjs)$/)
+const filenames = files.keys()
 
-function getModule (filename) {
-  let file = files(filename)
-  return file.default
-    ? file.default
-    : file
+function getModule(filename) {
+  const file = files(filename)
+  return file.default || file
 }
-let middleware = {}
+const middleware = {}
 
 // Generate the middleware
-for (let filename of filenames) {
-  let name = filename.replace(/^\.\//, '').replace(/\.(mjs|js)$/, '')
+for (const filename of filenames) {
+  const name = filename.replace(/^\.\//, '').replace(/\.(js|mjs)$/, '')
   middleware[name] = getModule(filename)
 }
 
 export default middleware
-

@@ -17,12 +17,12 @@
                 </p>
             </blockquote>
             <div v-html="content"></div>
-            <div class="wxcode" v-if="blog.source">
+            <!-- <div class="wxcode" v-if="blog.source">
                 <img src="~assets/img/qrcode.jpg" alt="">
                 <p>
                     更多精彩，请关注我的公众号！
                 </p>
-            </div>
+            </div> -->
             <div class="blog-nav">
                 <a class="prev" :title="prev.title" :href="'/blog/'+prev._id" v-if="prev">{{prev.title}}</a>
                 <a class="next" :title="next.title" :href="'/blog/'+next._id" v-if="next">{{next.title}}</a>
@@ -36,28 +36,29 @@
 import BackTop from '~/components/BackTop'
 import axios from '~/plugins/axios'
 import markdown from '~/plugins/md'
-import Gitment from 'gitment'
-import '~/assets/css/gitment.css'
-const CommentTheme = {
-    render(state, instance) {
-        const container = document.createElement('div')
-        container.lang = 'en-US'
-        container.className = 'gitment-container gitment-root-container'
-        container.appendChild(instance.renderHeader(state, instance))
-        container.appendChild(instance.renderEditor(state, instance))
-        container.appendChild(instance.renderComments(state, instance))
-        // container.appendChild(instance.renderFooter(state, instance))
-        return container
-    }
-}
+// import Gitment from 'gitment'
+// import '~/assets/css/gitment.css'
+// const CommentTheme = {
+//     render(state, instance) {
+//         const container = document.createElement('div')
+//         container.lang = 'zh'
+//         container.className = 'gitment-container gitment-root-container'
+//         console.log(instance)
+//         container.appendChild(instance.renderHeader(state, instance))
+//         container.appendChild(instance.renderEditor(state, instance))
+//         container.appendChild(instance.renderComments(state, instance))
+//         // container.appendChild(instance.renderFooter(state, instance))
+//         return container
+//     }
+// }
 export default {
     components: {
         BackTop
     },
     async asyncData({ route, error }) {
-        let { data: { data } } = await axios.get(
-            '/blog/post/' + route.params.id + '?guide=1'
-        )
+        let {
+            data: { data }
+        } = await axios.get('/blog/post/' + route.params.id + '?guide=1')
         if (!data._id) {
             error({ statusCode: 404 })
         }
@@ -99,17 +100,34 @@ export default {
             ]
         }
     },
+    methods: {
+        utterances: function() {
+            let comment = document.getElementById('comment')
+            if (!comment) {
+                return
+            }
+
+            let script = document.createElement('script')
+            script.src = 'https://utteranc.es/client.js'
+            script.setAttribute('repo', 'cyyjs/blog_comment')
+            script.setAttribute('theme', 'github-light')
+            script.setAttribute('issue-term', `${this.blog.title}`)
+            script.setAttribute('crossorigin', 'anonymous')
+            comment.appendChild(script)
+        }
+    },
     mounted() {
-        new Gitment({
-            id: this.blog._id, // 可选。默认为 location.href
-            owner: 'cyyjs',
-            repo: 'blog_comment',
-            oauth: {
-                client_id: 'ac10f3c942ffb50e2d9b',
-                client_secret: 'be6b45d2000cb68ce4ecc23f3d34eb4737091e4f'
-            },
-            theme: CommentTheme
-        }).render('comment')
+        this.utterances()
+        // new Gitment({
+        //     id: this.blog._id, // 可选。默认为 location.href
+        //     owner: 'cyyjs',
+        //     repo: 'blog_comment',
+        //     oauth: {
+        //         client_id: 'ac10f3c942ffb50e2d9b',
+        //         client_secret: 'be6b45d2000cb68ce4ecc23f3d34eb4737091e4f'
+        //     },
+        //     theme: CommentTheme
+        // }).render('comment')
     }
 }
 </script>
@@ -135,6 +153,10 @@ export default {
     .next::after {
         content: ' →';
     }
+}
+#comment {
+    border-top: 1px solid #eee;
+    margin-top: 20px;
 }
 </style>
 

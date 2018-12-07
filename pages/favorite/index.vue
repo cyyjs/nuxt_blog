@@ -40,7 +40,11 @@ export default {
         BackTop
     },
     async asyncData({ env }) {
-        let { data: { data: { data } } } = await axios.get('/favorite')
+        let {
+            data: {
+                data: { data }
+            }
+        } = await axios.get('/favorite')
         let list = data || []
         return {
             list
@@ -129,7 +133,7 @@ export default {
         background: #fff;
         border-radius: 3px;
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        margin-bottom: 30px;
+        margin-bottom: 20px;
         &:nth-child(3n) {
             margin-right: 0;
         }

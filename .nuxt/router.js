@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import { interopDefault } from './utils'
 
-const _00ca55e5 = () => import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */).then(m => m.default || m)
-const _7e5ffcfd = () => import('../pages/about.vue' /* webpackChunkName: "pages/about" */).then(m => m.default || m)
-const _acdfa942 = () => import('../pages/favorite/index.vue' /* webpackChunkName: "pages/favorite/index" */).then(m => m.default || m)
-const _2a4e8d8d = () => import('../pages/blog/_id.vue' /* webpackChunkName: "pages/blog/_id" */).then(m => m.default || m)
-const _c3d0507c = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
+const _7e5ffcfd = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
+const _00ca55e5 = () => interopDefault(import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */))
+const _acdfa942 = () => interopDefault(import('../pages/favorite/index.vue' /* webpackChunkName: "pages/favorite/index" */))
+const _2a4e8d8d = () => interopDefault(import('../pages/blog/_id.vue' /* webpackChunkName: "pages/blog/_id" */))
+const _c3d0507c = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
-
 
 if (process.client) {
   window.history.scrollRestoration = 'manual'
@@ -22,7 +22,7 @@ const scrollBehavior = function (to, from, savedPosition) {
   if (to.matched.length < 2) {
     // scroll to the top of the page
     position = { x: 0, y: 0 }
-  } else if (to.matched.some((r) => r.components.default.options.scrollToTop)) {
+  } else if (to.matched.some(r => r.components.default.options.scrollToTop)) {
     // if one of the children has scrollToTop option set to true
     position = { x: 0, y: 0 }
   }
@@ -57,43 +57,36 @@ const scrollBehavior = function (to, from, savedPosition) {
   })
 }
 
-
-export function createRouter () {
+export function createRouter() {
   return new Router({
     mode: 'history',
     base: '/',
     linkActiveClass: 'active-link',
     linkExactActiveClass: 'nuxt-link-exact-active',
     scrollBehavior,
-    routes: [
-		{
-			path: "/blog",
-			component: _00ca55e5,
-			name: "blog"
-		},
-		{
-			path: "/about",
-			component: _7e5ffcfd,
-			name: "about"
-		},
-		{
-			path: "/favorite",
-			component: _acdfa942,
-			name: "favorite"
-		},
-		{
-			path: "/blog/:id",
-			component: _2a4e8d8d,
-			name: "blog-id"
-		},
-		{
-			path: "/",
-			component: _c3d0507c,
-			name: "index"
-		}
-    ],
-    
-    
+
+    routes: [{
+      path: "/about",
+      component: _7e5ffcfd,
+      name: "about"
+    }, {
+      path: "/blog",
+      component: _00ca55e5,
+      name: "blog"
+    }, {
+      path: "/favorite",
+      component: _acdfa942,
+      name: "favorite"
+    }, {
+      path: "/blog/:id",
+      component: _2a4e8d8d,
+      name: "blog-id"
+    }, {
+      path: "/",
+      component: _c3d0507c,
+      name: "index"
+    }],
+
     fallback: false
   })
 }

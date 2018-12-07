@@ -5,14 +5,21 @@
     </svg>
   </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            open: false
+        }
+    }
+}
+</script>
 
 <style lang="scss">
 @import '~assets/css/config';
 
 .sidebar-button {
     display: none;
-    width: 1.25rem;
-    height: 1.25rem;
     position: absolute;
     padding: 0.6rem;
     top: 0.6rem;
@@ -27,7 +34,14 @@
 
 @media (max-width: $MQMobile) {
     .sidebar-button {
-        display: block;
+        display: inline-block;
+        svg {
+            transition: transform 0.2s;
+            transform-origin: center center;
+        }
+    }
+    .openpage .sidebar-button > svg {
+        transform: rotate(90deg);
     }
 }
 </style>

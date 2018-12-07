@@ -2,7 +2,7 @@
   <div class="back-top">
       <ul>
           <li class="tooltip" data-title="返回顶部" v-show="scrollTop > 300" @click="toTop"><img src="~assets/img/back-top.svg" alt=""></li>
-          <li data-title="关注公众号" @click.stop="showCode = !showCode"  class="tooltip wxcode-btn"><img src="~assets/img/head.svg" alt=""> </li>
+          <!-- <li data-title="关注公众号" @click.stop="showCode = !showCode"  class="tooltip wxcode-btn"><img src="~assets/img/head.svg" alt=""> </li> -->
       </ul>
       <div :class="['wxcode', showCode ? 'wxcode-show': ''] ">
           <img id="wxcode" src="~assets/img/qrcode.jpg" alt="">

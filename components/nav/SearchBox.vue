@@ -56,16 +56,17 @@ export default {
             this.query = event.target.value
             clearTimeout(this.timer)
             this.timer = setTimeout(async () => {
-                let { data: { data: { data } } } = await axios.get(
-                    '/blog/post',
-                    {
-                        params: {
-                            pageNo: 1,
-                            pageSize: 5,
-                            title: this.query
-                        }
+                let {
+                    data: {
+                        data: { data }
                     }
-                )
+                } = await axios.get('/blog/post', {
+                    params: {
+                        pageNo: 1,
+                        pageSize: 5,
+                        title: this.query
+                    }
+                })
                 this.list = data
             }, 500)
         },
@@ -137,10 +138,10 @@ export default {
         background: #fff;
         width: 20rem;
         position: absolute;
-        top: 1.5rem;
+        top: 2.2rem;
         border: 1px solid darken($borderColor, 10%);
         border-radius: 6px;
-        padding: 0.4rem;
+        // padding: 0.4rem;
         list-style-type: none;
 
         &.align-right {

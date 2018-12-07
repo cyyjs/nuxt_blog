@@ -2,12 +2,12 @@ import Vue from 'vue'
 
 const noopData = () => ({})
 
-// window.onNuxtReady(() => console.log('Ready')) hook
+// window.{{globals.loadedCallback}} hook
 // Useful for jsdom testing or plugins (https://github.com/tmpvar/jsdom#dealing-with-asynchronous-script-loading)
 if (process.client) {
-  window._nuxtReadyCbs = []
+  window.onNuxtReadyCbs = []
   window.onNuxtReady = (cb) => {
-    window._nuxtReadyCbs.push(cb)
+    window.onNuxtReadyCbs.push(cb)
   }
 }
 
@@ -19,6 +19,10 @@ export function globalHandleError(error) {
   }
 }
 
+export function interopDefault(promise) {
+  return promise.then(m => m.default || m)
+}
+
 export function applyAsyncData(Component, asyncData) {
   const ComponentData = Component.options.data || noopData
   // Prevent calling this method for each request on SSR context
@@ -27,7 +31,7 @@ export function applyAsyncData(Component, asyncData) {
   }
   Component.options.hasAsyncData = true
   Component.options.data = function () {
-    const data =  ComponentData.call(this)
+    const data = ComponentData.call(this)
     if (this.$ssrContext) {
       asyncData = this.$ssrContext.asyncData[Component.cid]
     }
@@ -95,7 +99,8 @@ export function resolveRouteComponents(route) {
       if (typeof Component === 'function' && !Component.options) {
         Component = await Component()
       }
-      return match.components[key] = sanitizeComponent(Component)
+      match.components[key] = sanitizeComponent(Component)
+      return match.components[key]
     })
   )
 }
@@ -113,7 +118,6 @@ export async function getRouteData(route) {
 }
 
 export async function setContext(app, context) {
-  const route = (context.to ? context.to : context.route)
   // If context not defined, create it
   if (!app.context) {
     app.context = {
@@ -121,7 +125,7 @@ export async function setContext(app, context) {
       isDev: false,
       isHMR: false,
       app,
-      
+
       payload: context.payload,
       error: context.error,
       base: '/',
@@ -134,7 +138,6 @@ export async function setContext(app, context) {
       if (!status) {
         return
       }
-      // Used in middleware
       app.context._redirected = true
       // if only 1 or 2 arguments: redirect('/') or redirect('/', { foo: 'bar' })
       let pathType = typeof path
@@ -171,8 +174,12 @@ export async function setContext(app, context) {
         }
       }
     }
-    if (process.server) app.context.beforeNuxtRender = fn => context.beforeRenderFns.push(fn)
-    if (process.client) app.context.nuxtState = window.__NUXT__
+    if (process.server) {
+      app.context.beforeNuxtRender = fn => context.beforeRenderFns.push(fn)
+    }
+    if (process.client) {
+      app.context.nuxtState = window.__NUXT__
+    }
   }
   // Dynamic keys
   app.context.next = context.next
@@ -194,9 +201,9 @@ export function middlewareSeries(promises, appContext) {
     return Promise.resolve()
   }
   return promisify(promises[0], appContext)
-  .then(() => {
-    return middlewareSeries(promises.slice(1), appContext)
-  })
+    .then(() => {
+      return middlewareSeries(promises.slice(1), appContext)
+    })
 }
 
 export function promisify(fn, context) {
@@ -223,14 +230,14 @@ export function promisify(fn, context) {
 
 // Imported from vue-router
 export function getLocation(base, mode) {
-  var path = window.location.pathname
+  let path = window.location.pathname
   if (mode === 'hash') {
     return window.location.hash.replace(/^#\//, '')
   }
   if (base && path.indexOf(base) === 0) {
     path = path.slice(base.length)
   }
-  return (path || '/') + window.location.search + window.location.hash
+  return decodeURI(path || '/') + window.location.search + window.location.hash
 }
 
 export function urlJoin() {
@@ -261,6 +268,23 @@ export function getQueryDiff(toQuery, fromQuery) {
   return diff
 }
 
+export function normalizeError(err) {
+  let message
+  if (!(err.message || typeof err === 'string')) {
+    try {
+      message = JSON.stringify(err, null, 2)
+    } catch (e) {
+      message = `[${err.constructor.name}]`
+    }
+  } else {
+    message = err.message || err
+  }
+  return {
+    message: message,
+    statusCode: (err.statusCode || err.status || (err.response && err.response.status) || 500)
+  }
+}
+
 /**
  * The main path matching regexp utility.
  *
@@ -287,17 +311,17 @@ const PATH_REGEXP = new RegExp([
  * @return {!Array}
  */
 function parse(str, options) {
-  var tokens = []
-  var key = 0
-  var index = 0
-  var path = ''
-  var defaultDelimiter = options && options.delimiter || '/'
-  var res
+  const tokens = []
+  let key = 0
+  let index = 0
+  let path = ''
+  const defaultDelimiter = (options && options.delimiter) || '/'
+  let res
 
   while ((res = PATH_REGEXP.exec(str)) != null) {
-    var m = res[0]
-    var escaped = res[1]
-    var offset = res.index
+    const m = res[0]
+    const escaped = res[1]
+    const offset = res.index
     path += str.slice(index, offset)
     index = offset + m.length
 
@@ -307,13 +331,13 @@ function parse(str, options) {
       continue
     }
 
-    var next = str[index]
-    var prefix = res[2]
-    var name = res[3]
-    var capture = res[4]
-    var group = res[5]
-    var modifier = res[6]
-    var asterisk = res[7]
+    const next = str[index]
+    const prefix = res[2]
+    const name = res[3]
+    const capture = res[4]
+    const group = res[5]
+    const modifier = res[6]
+    const asterisk = res[7]
 
     // Push the current path onto the tokens.
     if (path) {
@@ -321,11 +345,11 @@ function parse(str, options) {
       path = ''
     }
 
-    var partial = prefix != null && next != null && next !== prefix
-    var repeat = modifier === '+' || modifier === '*'
-    var optional = modifier === '?' || modifier === '*'
-    var delimiter = res[2] || defaultDelimiter
-    var pattern = capture || group
+    const partial = prefix != null && next != null && next !== prefix
+    const repeat = modifier === '+' || modifier === '*'
+    const optional = modifier === '?' || modifier === '*'
+    const delimiter = res[2] || defaultDelimiter
+    const pattern = capture || group
 
     tokens.push({
       name: name || key++,
@@ -359,7 +383,7 @@ function parse(str, options) {
  * @return {string}
  */
 function encodeURIComponentPretty(str) {
-  return encodeURI(str).replace(/[\/?#]/g, (c) => {
+  return encodeURI(str).replace(/[/?#]/g, (c) => {
     return '%' + c.charCodeAt(0).toString(16).toUpperCase()
   })
 }
@@ -381,23 +405,23 @@ function encodeAsterisk(str) {
  */
 function tokensToFunction(tokens) {
   // Compile all the tokens into regexps.
-  var matches = new Array(tokens.length)
+  const matches = new Array(tokens.length)
 
   // Compile all the patterns before compilation.
-  for (var i = 0; i < tokens.length; i++) {
+  for (let i = 0; i < tokens.length; i++) {
     if (typeof tokens[i] === 'object') {
       matches[i] = new RegExp('^(?:' + tokens[i].pattern + ')$')
     }
   }
 
-  return function(obj, opts) {
-    var path = ''
-    var data = obj || {}
-    var options = opts || {}
-    var encode = options.pretty ? encodeURIComponentPretty : encodeURIComponent
+  return function (obj, opts) {
+    let path = ''
+    const data = obj || {}
+    const options = opts || {}
+    const encode = options.pretty ? encodeURIComponentPretty : encodeURIComponent
 
-    for (var i = 0; i < tokens.length; i++) {
-      var token = tokens[i]
+    for (let i = 0; i < tokens.length; i++) {
+      const token = tokens[i]
 
       if (typeof token === 'string') {
         path += token
@@ -405,8 +429,8 @@ function tokensToFunction(tokens) {
         continue
       }
 
-      var value = data[token.name]
-      var segment
+      const value = data[token.name || 'pathMatch']
+      let segment
 
       if (value == null) {
         if (token.optional) {
@@ -434,7 +458,7 @@ function tokensToFunction(tokens) {
           }
         }
 
-        for (var j = 0; j < value.length; j++) {
+        for (let j = 0; j < value.length; j++) {
           segment = encode(value[j])
 
           if (!matches[i].test(segment)) {
@@ -467,7 +491,7 @@ function tokensToFunction(tokens) {
  * @return {string}
  */
 function escapeString(str) {
-  return str.replace(/([.+*?=^!:${}()[\]|\/\\])/g, '\\$1')
+  return str.replace(/([.+*?=^!:${}()[\]|/\\])/g, '\\$1')
 }
 
 /**
@@ -477,7 +501,7 @@ function escapeString(str) {
  * @return {string}
  */
 function escapeGroup(group) {
-  return group.replace(/([=!:$\/()])/g, '\\$1')
+  return group.replace(/([=!:$/()])/g, '\\$1')
 }
 
 /**
@@ -487,13 +511,13 @@ function escapeGroup(group) {
  * @param  {string} query
  * @return {string}
  */
-function formatUrl (url, query) {
+function formatUrl(url, query) {
   let protocol
-  let index = url.indexOf('://')
+  const index = url.indexOf('://')
   if (index !== -1) {
     protocol = url.substring(0, index)
     url = url.substring(index + 3)
-  } else if (url.indexOf('//') === 0) {
+  } else if (url.startsWith('//')) {
     url = url.substring(2)
   }
 
@@ -524,9 +548,9 @@ function formatUrl (url, query) {
  * @param  {object} query
  * @return {string}
  */
-function formatQuery (query) {
+function formatQuery(query) {
   return Object.keys(query).sort().map((key) => {
-    var val = query[key]
+    const val = query[key]
     if (val == null) {
       return ''
     }

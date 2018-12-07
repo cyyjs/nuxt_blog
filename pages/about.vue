@@ -1,6 +1,45 @@
 <template>
     <div class="about">
         <h1>关于我</h1>
+        <h3>技能标签</h3>
+       <div class="skill">
+            <div class="skill-title">前端</div>
+            <div>
+                <span class="skill-item" v-for="skill in skills1" :key="skill">{{skill}}</span>
+            </div>
+       </div>
+       
+       <div class="skill">
+            <div class="skill-title">服务端</div>
+            <div>
+                <span class="skill-item" v-for="skill in skills2" :key="skill">{{skill}}</span>
+            </div>
+
+       </div>
+        <div class="skill">
+            <div class="skill-title">数据库</div>
+            <div>
+                <span class="skill-item" v-for="skill in skills3" :key="skill">{{skill}}</span>
+            </div>
+       </div>
+       <div class="skill">
+            <div class="skill-title">客户端</div>
+            <div>
+                <span class="skill-item" v-for="skill in skills4" :key="skill">{{skill}}</span>
+            </div>
+       </div>
+       
+       <div class="skill">
+            <div class="skill-title">其他</div>
+            <div>
+                <span class="skill-item" v-for="skill in skills5" :key="skill">{{skill}}</span>
+            </div>
+       </div>
+       
+        <h3>GitHub</h3>
+       <p>
+            <a href="https://github.com/cyyjs" target="_blank">https://github.com/cyyjs</a>
+        </p>
         <h3>个人作品</h3>
         <div class="production">
             <div class="item" v-for="(p, i) in productions" :key="i">
@@ -23,6 +62,11 @@
 export default {
     data() {
         return {
+            skills1: ['HTML', 'CSS', 'JS', 'ES6/7', 'Vue', 'Webpack', 'SCSS'],
+            skills2: ['Node.js', 'koa', 'express', 'Think.js', 'Nuxt.js'],
+            skills3: ['Mongodb', 'MySQL', 'Redis', 'memcached'],
+            skills4: ['Electron', '微信小程序', 'uniapp'],
+            skills5: ['Git', 'Docker', 'Nginx'],
             productions: [
                 {
                     name: '智能识图',
@@ -57,9 +101,37 @@ h1 {
 }
 h3 {
     padding-left: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
+
 p {
     margin: 20px;
+}
+.skill {
+    padding: 0 20px 10px 20px;
+    display: flex;
+}
+.skill > div:last-child {
+    flex: 1;
+    text-align: left;
+}
+.skill-title {
+    font-weight: 500;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 30px;
+    width: 70px;
+}
+.skill-item {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #46bd87;
+    color: #fff;
+    display: inline-block;
 }
 .production {
     text-align: left;
