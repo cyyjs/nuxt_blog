@@ -23,9 +23,6 @@ module.exports = {
                 hid: 'description',
                 name: 'description',
                 content: 'Cyy的个人博客，技术分享'
-            }, {
-                name: 'domain_verify',
-                content: 'pmrgi33nmfuw4ir2ejqwy2lcoqxhi33qeiwcez3vnfsceorcgnrgcnzqheytamlfgvstimjzgbqwmmldmuzdozlfgnsdmyrrmjrcelbcoruw2zktmf3gkir2ge2tinjwgm2dsobvgy3tq7i'
             }
         ],
         link: [
