@@ -9,7 +9,7 @@ import _6f6c098b from '../layouts/default.vue'
 const layouts = { "_blog": _2d21d098,"_default": _6f6c098b }
 
 export default {
-  head: {"title":"cyy blog","titleTemplate":"%s - Cyy's Blog","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1, user-scalable=no"},{"http-equiv":"cleartype","content":"on"},{"http-equiv":"Cache-Control"},{"hid":"keywords","name":"keywords","content":"cyy,博客,前端,JavaScript, Node, Vue,nuxt, Electron"},{"name":"author","content":"cyy6543@gmail.com"},{"hid":"description","name":"description","content":"Cyy的个人博客，技术分享"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"\u002F\u002Fat.alicdn.com\u002Ft\u002Ffont_955772_y0f2o0sf01a.css"}],"style":[],"script":[]},
+  head: {"title":"cyy blog","titleTemplate":"%s - Cyy's Blog","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1, user-scalable=no"},{"http-equiv":"cleartype","content":"on"},{"http-equiv":"Cache-Control"},{"hid":"keywords","name":"keywords","content":"cyy,博客,前端,JavaScript, Node, Vue,nuxt, Electron"},{"name":"author","content":"cyy6543@gmail.com"},{"hid":"description","name":"description","content":"Cyy的个人博客，技术分享"},{"name":"domain_verify","content":"pmrgi33nmfuw4ir2ejqwy2lcoqxhi33qeiwcez3vnfsceorcgnrgcnzqheytamlfgvstimjzgbqwmmldmuzdozlfgnsdmyrrmjrcelbcoruw2zktmf3gkir2ge2tinjwgm2dsobvgy3tq7i"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","type":"text\u002Fcss","href":"\u002F\u002Fat.alicdn.com\u002Ft\u002Ffont_955772_y0f2o0sf01a.css"}],"style":[],"script":[]},
 
   render(h, props) {
     const loadingEl = h('nuxt-loading', { ref: 'loading' })
