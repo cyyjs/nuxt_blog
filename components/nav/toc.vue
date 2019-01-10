@@ -33,7 +33,8 @@ export default {
             active1: '',
             active2: '',
             scrollTop: 0,
-            anchor: []
+            anchor: [],
+            scrollLock: false
         }
     },
     computed: {
@@ -82,6 +83,7 @@ export default {
     },
     methods: {
         jump(anchor) {
+            window.removeEventListener('scroll', this.onScroll)
             let jump = document.querySelector('#' + anchor)
             let jumpTop = jump.offsetTop - 65
             let scrollTop =
@@ -103,6 +105,7 @@ export default {
                         document.documentElement.scrollTop = jumpTop
                         document.body.scrollTop = jumpTop
                         cancelAnimationFrame(timer)
+                        window.addEventListener('scroll', this.onScroll)
                     }
                 } else {
                     if (scrollTop > jumpTop && scrollTop - jumpTop > step) {
@@ -114,6 +117,7 @@ export default {
                         document.documentElement.scrollTop = jumpTop
                         document.body.scrollTop = jumpTop
                         cancelAnimationFrame(timer)
+                        window.addEventListener('scroll', this.onScroll)
                     }
                 }
             }
@@ -171,7 +175,7 @@ export default {
             } else {
                 this.active2 = ''
             }
-            this.active1 = anchors.p
+            this.active1 = anchors.p || anchors.anchor
         }
     },
     mounted() {
