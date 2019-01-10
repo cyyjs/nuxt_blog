@@ -30,6 +30,7 @@
         "markdown-it-sup": "^1.0.0",
         "markdown-it-task-lists": "^2.1.1",
         "markdown-it-toc": "^1.1.0",
+        "markdown-it-toc-and-anchor": "^4.2.0",
         "nuxt": "^2.3.4"
     },
     "devDependencies": {

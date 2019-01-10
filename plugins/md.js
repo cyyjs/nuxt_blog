@@ -1,3 +1,5 @@
+import markdownItTocAndAnchor from "markdown-it-toc-and-anchor"
+import markdownIt from "markdown-it"
 const hljs = require('highlight.js')
 const markdown = require('markdown-it')({
     html: true, // Enable HTML tags in source
@@ -26,36 +28,40 @@ const markdown = require('markdown-it')({
     }
 })
 // 表情
-var emoji = require('markdown-it-emoji')
+const emoji = require('markdown-it-emoji')
 // 下标
-var sub = require('markdown-it-sub')
+const sub = require('markdown-it-sub')
 // 上标
-var sup = require('markdown-it-sup')
+const sup = require('markdown-it-sup')
 // <dl/>
-var deflist = require('markdown-it-deflist')
+const deflist = require('markdown-it-deflist')
 // <abbr/>
-var abbr = require('markdown-it-abbr')
+const abbr = require('markdown-it-abbr')
 // footnote
-var footnote = require('markdown-it-footnote')
+const footnote = require('markdown-it-footnote')
 // insert 带有下划线 样式 ++ ++
-var insert = require('markdown-it-ins')
+const insert = require('markdown-it-ins')
 // mark
-var mark = require('markdown-it-mark')
+const mark = require('markdown-it-mark')
 // taskLists
-var taskLists = require('markdown-it-task-lists')
+const taskLists = require('markdown-it-task-lists')
 // container
-var container = require('markdown-it-container')
+const container = require('markdown-it-container')
 //
-var toc = require('markdown-it-toc')
+// const toc = require('markdown-it-toc')
+
 // add target="_blank" to all link
-var defaultRender =
+const defaultRender =
     markdown.renderer.rules.link_open ||
     function (tokens, idx, options, env, self) {
         return self.renderToken(tokens, idx, options)
     }
 markdown.renderer.rules.link_open = function (tokens, idx, options, env, self) {
     // If you are sure other plugins can't add `target` - drop check below
-    var aIndex = tokens[idx].attrIndex('target')
+    let aIndex = 0
+    if (tokens[idx].attrIndex) {
+        aIndex = tokens[idx].attrIndex('target')
+    }
 
     if (aIndex < 0) {
         tokens[idx].attrPush(['target', '_blank']) // add new attribute
@@ -67,6 +73,7 @@ markdown.renderer.rules.link_open = function (tokens, idx, options, env, self) {
     return defaultRender(tokens, idx, options, env, self)
 }
 // math katex
+
 markdown
     .use(emoji)
     .use(sup)
@@ -82,6 +89,9 @@ markdown
     .use(mark)
     .use(container)
     .use(taskLists)
-    .use(toc)
-
+    // .use(toc)
+    .use(markdownItTocAndAnchor, {
+        tocLastLevel: 3 // 2，3级标题
+        // anchorLinkSymbolClassName: 'xx'
+    }) // 生成目录结构
 export default markdown

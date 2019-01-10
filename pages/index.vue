@@ -1,24 +1,24 @@
 <template>
-  <section class="home">
-      <img class="head" src="~assets/img/head.jpeg" alt="head">
-      <p class="about-btn">
-        <nuxt-link to="/about">About Me →</nuxt-link>
-      </p>
-      <div class="features">
-          <div class="feature">
-              <h2>Blog</h2>
-              <p>在日常中学习和总结的一些经验。</p>
-          </div>
-          <div class="feature">
-              <h2>Favorite</h2>
-              <p>一些网络收藏，工具、文章等</p>
-          </div>
-          <div class="feature">
-              <h2>Project</h2>
-              <p>在 github 中开源的项目</p>
-          </div>
-      </div>
-  </section>
+    <section class="home">
+        <img class="head" src="~assets/img/head.jpeg" alt="head">
+        <p class="about-btn">
+            <nuxt-link to="/about">About Me →</nuxt-link>
+        </p>
+        <div class="features">
+            <div class="feature">
+                <h2>Blog</h2>
+                <p>在日常中学习和总结的一些经验。</p>
+            </div>
+            <div class="feature">
+                <h2>Favorite</h2>
+                <p>一些网络收藏，工具、文章等</p>
+            </div>
+            <div class="feature">
+                <h2>Project</h2>
+                <p>在 github 中开源的项目</p>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -46,6 +46,8 @@ export default {
 .home {
     margin-top: 15vh;
     text-align: center;
+    background-color: #fff;
+    padding: 20px;
 }
 .about-btn {
     margin-top: 20px;
@@ -92,6 +94,7 @@ export default {
 }
 @media (max-width: 719px) {
     .home {
+        margin-top: 0;
         .features {
             flex-direction: column;
             .feature {
