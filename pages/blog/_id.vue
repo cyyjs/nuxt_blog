@@ -165,6 +165,7 @@ export default {
     display: flex;
     .page {
         flex: 1;
+        overflow: hidden;
     }
 }
 @media (max-width: 720px) {
