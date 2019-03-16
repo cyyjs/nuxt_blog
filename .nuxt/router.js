@@ -5,6 +5,7 @@ import { interopDefault } from './utils'
 const _7e5ffcfd = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
 const _00ca55e5 = () => interopDefault(import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */))
 const _acdfa942 = () => interopDefault(import('../pages/favorite/index.vue' /* webpackChunkName: "pages/favorite/index" */))
+const _2e5c8889 = () => interopDefault(import('../pages/project.vue' /* webpackChunkName: "pages/project" */))
 const _2a4e8d8d = () => interopDefault(import('../pages/blog/_id.vue' /* webpackChunkName: "pages/blog/_id" */))
 const _c3d0507c = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -77,6 +78,10 @@ export function createRouter() {
       path: "/favorite",
       component: _acdfa942,
       name: "favorite"
+    }, {
+      path: "/project",
+      component: _2e5c8889,
+      name: "project"
     }, {
       path: "/blog/:id",
       component: _2a4e8d8d,

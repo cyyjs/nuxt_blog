@@ -6,15 +6,15 @@
         </p>
         <div class="features">
             <div class="feature">
-                <h2>Blog</h2>
+                <nuxt-link to="/blog">Blog</nuxt-link>
                 <p>在日常中学习和总结的一些经验。</p>
             </div>
             <div class="feature">
-                <h2>Favorite</h2>
+                <nuxt-link to="/favorite">Favorite</nuxt-link>
                 <p>一些网络收藏，工具、文章等</p>
             </div>
             <div class="feature">
-                <h2>Project</h2>
+                <nuxt-link to="/project">Project</nuxt-link>
                 <p>在 github 中开源的项目</p>
             </div>
         </div>
@@ -32,6 +32,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/css/config";
 .head {
     max-height: 180px;
     border-radius: 50%;
@@ -78,12 +79,12 @@ export default {
         flex-grow: 1;
         flex-basis: 30%;
         max-width: 30%;
-        & > h2 {
+        & > a {
             font-size: 1.4rem;
             font-weight: 500;
             border-bottom: none;
             padding-bottom: 0;
-            color: #3a5169;
+            color: $accentColor;
             line-height: 1.25;
         }
         & > p {
