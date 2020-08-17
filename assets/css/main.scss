@@ -220,5 +220,11 @@ h3 {
     margin-top: -20px;
 }
 
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #eaecef;
+}
+
 @import 'code';
 @import 'mobile';
+@import 'dark-theme';

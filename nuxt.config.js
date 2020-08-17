@@ -16,9 +16,9 @@ module.exports = {
             {
                 hid: 'keywords',
                 name: 'keywords',
-                content: 'cyy,博客,前端,JavaScript, Node, Vue,nuxt, Electron'
+                content: 'cyyjs, 博客, 前端, JavaScript, Node, Vue, nuxt, Electron'
             },
-            { name: 'author', content: 'cyy6543@gmail.com' },
+            { name: 'author', content: 'cyy0418@qq.com' },
             {
                 hid: 'description',
                 name: 'description',

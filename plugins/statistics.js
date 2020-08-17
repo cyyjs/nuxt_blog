@@ -5,27 +5,27 @@
 /*
     ** Google 统计分析脚本
     */
-; (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r
-    ; (i[r] =
-            i[r] ||
-            function () {
-                ; (i[r].q = i[r].q || []).push(arguments)
-            }),
-    (i[r].l = 1 * new Date())
-    ; (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
-    a.async = 1
-    a.src = g
-    m.parentNode.insertBefore(a, m)
-})(
-    window,
-    document,
-    'script',
-    'https://www.google-analytics.com/analytics.js',
-    'ga'
-)
+// ; (function (i, s, o, g, r, a, m) {
+//     i['GoogleAnalyticsObject'] = r
+//     ; (i[r] =
+//             i[r] ||
+//             function () {
+//                 ; (i[r].q = i[r].q || []).push(arguments)
+//             }),
+//     (i[r].l = 1 * new Date())
+//     ; (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0])
+//     a.async = 1
+//     a.src = g
+//     m.parentNode.insertBefore(a, m)
+// })(
+//     window,
+//     document,
+//     'script',
+//     'https://www.google-analytics.com/analytics.js',
+//     'ga'
+// )
 
-ga('create', 'UA-98939871-4', 'auto')
+// ga('create', 'UA-98939871-4', 'auto')
 // }
 
 export default ({ app: { router }, store }) => {
@@ -37,8 +37,8 @@ export default ({ app: { router }, store }) => {
         /*
         ** 告诉 GA 增加一个 PV
         */
-        ga('set', 'page', to.fullPath)
-        ga('send', 'pageview')
+        // ga('set', 'page', to.fullPath)
+        // ga('send', 'pageview')
 
         // 百度统计
         if (document.getElementById('baidu_hm')) {

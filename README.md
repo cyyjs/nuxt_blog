@@ -1,4 +1,4 @@
-# nuxt_demo1
+# cyy blog
 
 > Nuxt.js project
 

@@ -110,7 +110,7 @@ export default {
         .list-content {
             flex-grow: 1;
             width: 620px;
-            margin-right: 240px;
+            margin-right: 260px;
         }
         .item-card {
             cursor: pointer;
@@ -167,6 +167,7 @@ export default {
             flex-shrink: 0;
             margin-bottom: 20px;
             & > div {
+                border-radius: 3px;
                 background-color: #fff;
                 box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
                 &:hover {

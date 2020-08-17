@@ -1,0 +1,110 @@
+$darkBgColor: #333!important;
+$darkBorderColor: #444!important;
+$forecolor: #eee!important;
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: $darkBgColor;
+  }
+  .navbar {
+    background-color: $darkBgColor;
+    border-bottom: 1px solid $darkBorderColor;
+    & svg path {
+      fill: $forecolor;
+    }
+    .search-box input {
+      background-color: $darkBgColor;
+    }
+    .suggestions {
+      background-color: $darkBgColor;
+      border-color: $darkBorderColor;
+      &>li.focused {
+        background-color: $darkBorderColor;
+        color: $darkBgColor;
+      }
+    }
+    .site-name,
+    a:not(.nuxt-link-exact-active) {
+      color: $forecolor;
+    }
+  }
+  .home {
+    background-color: $darkBgColor;
+    .features {
+      border-top: 1px solid $darkBorderColor;
+    }
+  }
+  .sidebar {
+    background-color: $darkBgColor;
+    border-right: $darkBorderColor;
+    a:not(.nuxt-link-exact-active) {
+      color: $forecolor;
+    }
+  }
+  #comment {
+    border-top: 1px solid $darkBorderColor;
+  }
+  .toc .toc-list {
+    background: $darkBorderColor;
+    a:not(.active1) {
+     color: $forecolor;
+    }
+  }
+  .page{
+    color: $forecolor;
+    .page-head {
+      background: $darkBgColor;
+      color: $forecolor;
+    }
+    .content {
+      background: $darkBgColor;
+      color: $forecolor;
+    }
+    blockquote {
+      background-color: $darkBorderColor;
+    }
+    .post-content {
+      h2 {
+        border-bottom: 1px solid $darkBorderColor;
+      }
+    }
+    .page-content{
+      .item-card {
+        background: $darkBgColor;
+        color: $forecolor;
+        &>h2 {
+          border-bottom: 1px solid $darkBorderColor;
+        }
+      }
+  
+      .page-right{
+        & .title {
+          border-bottom: 1px solid $darkBorderColor;
+        }
+        &> div {
+          background: $darkBorderColor;
+          border-bottom: 1px solid $darkBorderColor;
+        }
+      } 
+    }
+    .favorite .item-card {
+      background: $darkBgColor;
+      .item-body .item-content {
+        color: $forecolor;
+      }
+    }
+  }
+  .back-top ul li {
+    background: $darkBorderColor;
+  }
+  .about {
+    background: $darkBgColor;
+    color: $forecolor;
+    h3 {
+      border-bottom: 1px solid $darkBorderColor;
+    }
+  }
+  footer {
+    border-top: 1px solid $darkBorderColor;
+  }
+}

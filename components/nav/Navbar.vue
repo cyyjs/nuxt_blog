@@ -39,9 +39,7 @@ export default {
     z-index: 20;
     right: 0;
     height: 3.6rem;
-    background-color: #fff;
     box-sizing: border-box;
-    border-bottom: 1px solid #eaecef;
     padding: 0.7rem 1.5rem;
     line-height: 2.2rem;
     .logo {

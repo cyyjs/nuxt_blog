@@ -1,0 +1,44 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "/Users/yyc/file/mygit/nuxt_blog/pages/about.vue",
+    "chunkName": "pages/about",
+    "_name": "_9f5bb70e"
+  },
+  {
+    "name": "blog",
+    "path": "/blog",
+    "component": "/Users/yyc/file/mygit/nuxt_blog/pages/blog/index.vue",
+    "chunkName": "pages/blog/index",
+    "_name": "_d29d082e"
+  },
+  {
+    "name": "favorite",
+    "path": "/favorite",
+    "component": "/Users/yyc/file/mygit/nuxt_blog/pages/favorite/index.vue",
+    "chunkName": "pages/favorite/index",
+    "_name": "_0bacaf63"
+  },
+  {
+    "name": "project",
+    "path": "/project",
+    "component": "/Users/yyc/file/mygit/nuxt_blog/pages/project.vue",
+    "chunkName": "pages/project",
+    "_name": "_a73a7df6"
+  },
+  {
+    "name": "blog-id",
+    "path": "/blog/:id",
+    "component": "/Users/yyc/file/mygit/nuxt_blog/pages/blog/_id.vue",
+    "chunkName": "pages/blog/_id",
+    "_name": "_6d0f6491"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/yyc/file/mygit/nuxt_blog/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_5fec0184"
+  }
+]
