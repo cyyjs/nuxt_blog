@@ -1,10 +1,11 @@
 $darkBgColor: #333!important;
+$darkBgColor2: #222!important;
 $darkBorderColor: #444!important;
 $forecolor: #eee!important;
 
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: $darkBgColor;
+    background-color: $darkBgColor2;
   }
   .navbar {
     background-color: $darkBgColor;
