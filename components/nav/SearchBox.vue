@@ -64,6 +64,7 @@ export default {
                     params: {
                         pageNo: 1,
                         pageSize: 5,
+                        status: 1,
                         title: this.query
                     }
                 })
