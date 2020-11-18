@@ -2,7 +2,7 @@
     <header class="navbar">
         <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
         <nuxt-link to="/">
-            <img class="logo" src="~assets/img/logo.png" alt="">
+            <img class="logo can-hide" src="~assets/img/logo.png" alt="">
             <span class="site-name can-hide">Cyy's Blog</span>
         </nuxt-link>
         <div class="links">
@@ -12,6 +12,7 @@
                 <nuxt-link :class="['nav-item',activeClass]" to="/blog"><i class="iconfont icon-wenzhang1"></i> Blog</nuxt-link>
                 <nuxt-link class="nav-item" to="/favorite"><i class="iconfont icon-shoucang"></i> Favorite</nuxt-link>
                 <nuxt-link class="nav-item" to="/about"><i class="iconfont icon-wo"></i> About</nuxt-link>
+                <switch-theme></switch-theme>
             </nav>
         </div>
     </header>
@@ -19,8 +20,9 @@
 <script>
 import SidebarButton from '~/components/nav/SidebarButton'
 import SearchBox from '~/components/nav/SearchBox'
+import SwitchTheme from '~/components/SwitchTheme'
 export default {
-    components: { SidebarButton, SearchBox },
+    components: { SidebarButton, SearchBox, SwitchTheme },
     computed: {
         activeClass() {
             return this.$route.path.startsWith('/blog')

@@ -39,6 +39,12 @@ ul {
     margin: 0;
 }
 
+* {
+    transition: background-color 1s,
+        color 1s,
+        border-color 1s,
+        fill 1s;
+}
 .container-max {
     margin: auto;
     margin-top: 3.6rem;

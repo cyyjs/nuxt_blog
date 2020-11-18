@@ -21,7 +21,7 @@ export default {}
     font-size: 1.2em;
     padding: 0.6rem 0 0.6rem 1.5rem;
     font-weight: 600;
-    i {
+    & >>> i {
         font-size: 1.2em;
     }
     &.nuxt-link-exact-active {

@@ -1,12 +1,15 @@
 <template>
-  <div class="sidebar-button" @click="$emit('toggle-sidebar')">
-    <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512">
+  <div class="sidebar-button">
+    <svg class="icon toggle" @click="$emit('toggle-sidebar')" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512">
       <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class=""></path>
     </svg>
+    <switch-theme hide-text></switch-theme>
   </div>
 </template>
 <script>
+import SwitchTheme from '~/components/SwitchTheme';
 export default {
+    components: { SwitchTheme },
     data() {
         return {
             open: false
@@ -22,19 +25,24 @@ export default {
     display: none;
     position: absolute;
     padding: 0.6rem;
-    top: 0.6rem;
-    left: 1rem;
-
+    top: 0;
+    left: 10px;
     .icon {
-        display: block;
+        display: inline-block;
         width: 1.25rem;
         height: 1.25rem;
+    }
+    & i {
+        font-size: 1.25rem;
     }
 }
 
 @media (max-width: $MQMobile) {
     .sidebar-button {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 70px;
         svg {
             transition: transform 0.2s;
             transform-origin: center center;

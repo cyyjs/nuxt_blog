@@ -3,13 +3,12 @@ $darkBgColor2: #222!important;
 $darkBorderColor: #444!important;
 $forecolor: #eee!important;
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: $darkBgColor2;
-  }
+// @media (prefers-color-scheme: dark) {
+.dark {
+  background-color: $darkBgColor2;
   .navbar {
     background-color: $darkBgColor;
-    border-bottom: none;
+    border-bottom: 1px solid $darkBorderColor;
     & svg path {
       fill: $forecolor;
     }
