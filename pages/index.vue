@@ -1,6 +1,6 @@
 <template>
     <section class="home">
-        <img class="head" src="~assets/img/head.jpeg" alt="head">
+        <img class="head" src="https://i.alibt.top/img/head.jpg" alt="head">
         <p class="about-btn">
             <nuxt-link to="/about">About Me →</nuxt-link>
         </p>

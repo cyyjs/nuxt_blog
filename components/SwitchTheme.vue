@@ -34,7 +34,7 @@ export default {
         }
         let isDark = sessionStorage.getItem('dark')
         if (!isDark) {
-            this.themeIndex = 0
+            this.themeIndex = this.darkMode.matches ? 2 : 1
         } else if (isDark === 'true'){
             this.themeIndex = 2
         } else {
@@ -71,7 +71,7 @@ export default {
             if (this.themeIndex < 2) {
                 this.themeIndex++;
             } else {
-                this.themeIndex = 0;
+                this.themeIndex = 1;
             }
             this.toggleDarkClass(this.themeIndex)
         }

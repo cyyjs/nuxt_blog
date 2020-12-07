@@ -8,12 +8,12 @@
 </template>
 <style scoped>
 footer {
-    max-width: 960px;
-    padding: 2.5rem;
-    border-top: 1px solid #eaecef;
+    padding: 3.5rem 0;
     text-align: center;
     color: #4e6e8e;
     margin: auto;
+    margin-top: 10px;
+    background-color: #fff;
 }
 .github {
     vertical-align: middle;

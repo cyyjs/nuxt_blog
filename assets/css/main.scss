@@ -40,10 +40,10 @@ ul {
 }
 
 * {
-    transition: background-color 1s,
-        color 1s,
-        border-color 1s,
-        fill 1s;
+    transition: background-color .5s,
+        // color .5s,
+        border-color .5s,
+        fill .5s;
 }
 .container-max {
     margin: auto;
@@ -179,6 +179,7 @@ h3 {
         padding: 2rem 2.5rem;
         background: #fff;
         word-break: break-all;
+        color: #000;
     }
 }
 
