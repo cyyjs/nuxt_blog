@@ -75,7 +75,7 @@ export default {
                     name: "博客系统",
                     logo: "https://qn.alibt.top/4d9a0059-bba8-4e0e-b6e5-f7912d2fe7f7.png",
                     description: "个人博客",
-                    url: "http://alibt.top",
+                    url: "http://cyyjs.top",
                     platform: "Web、H5"
                 },
                 {
@@ -96,7 +96,7 @@ export default {
                     name: "CEditor",
                     logo: "https://cyyjs.github.io/static/ceditor256.png",
                     description: "基于Hexo的博客发布客户端",
-                    url: "http://ceditor.alibt.top/",
+                    url: "http://ceditor.cyyjs.top/",
                     platform: "macOS、Windows"
                 }
             ]

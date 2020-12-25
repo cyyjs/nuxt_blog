@@ -23,7 +23,7 @@ export default {
                 {
                     name: "CEditor",
                     description: "基于Hexo的博客发布客户端",
-                    url: "http://ceditor.alibt.top/",
+                    url: "http://ceditor.cyyjs.top/",
                     git: "https://github.com/cyyjs/ceditor"
                 }, {
                     name: "CVC",
@@ -38,7 +38,7 @@ export default {
                 }, {
                     name: "Easy Mock",
                     description: "可视化快速生成模拟数据的持久化服务。",
-                    url: "https://mock.alibt.top",
+                    url: "https://mock.cyyjs.top",
                     git: "https://github.com/cyyjs/easy-mock"
                 }, {
                     name: "cityMultiple",

@@ -14,12 +14,12 @@
                 <blockquote v-if="blog.source">
                     <p>
                         本文首发于个人博客
-                        <a href="http://alibt.top" target="_blank">Cyy’s Blog</a>
+                        <a href="http://cyyjs.top" target="_blank">Cyy’s Blog</a>
                         <br>转载请注明出处
                         <a
-                            :href="'http://alibt.top/blog/'+blog._id"
+                            :href="'http://cyyjs.top/blog/'+blog._id"
                             target="_blank"
-                        >http://alibt.top/blog/{{blog._id}}</a>
+                        >http://cyyjs.top/blog/{{blog._id}}</a>
                     </p>
                 </blockquote>
                 <div v-html="content.content"></div>
