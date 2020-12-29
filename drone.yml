@@ -7,9 +7,9 @@ steps:
   commands:
   - npm install
   - npm run build
-  - npm start
-trigger:
-  branch:
-  - master
-  event:
-  - push
+  # - npm start
+# trigger:
+#   branch:
+#   - master
+#   event:
+#   - push
