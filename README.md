@@ -1,3 +1,3 @@
-# cyy blog
+# cyy nuxt blog
 
 > Nuxt.js project
