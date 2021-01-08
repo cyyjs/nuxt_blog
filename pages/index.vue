@@ -23,11 +23,11 @@
 
 <script>
 export default {
-    head() {
-        return {
-            title: 'Home'
-        }
+  head() {
+    return {
+      title: 'Home'
     }
+  }
 }
 </script>
 

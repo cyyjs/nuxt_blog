@@ -17,43 +17,43 @@
 </template>
 <script>
 export default {
-    data() {
-        return {
-            productions: [
-                {
-                    name: "CEditor",
-                    description: "基于Hexo的博客发布客户端",
-                    url: "http://ceditor.cyyjs.top/",
-                    git: "https://github.com/cyyjs/ceditor"
-                }, {
-                    name: "CVC",
-                    description: "日历、省市选择、时段选择、拖放排序Vue组件",
-                    url: "https://cyyjs.github.io/cvc",
-                    git: "https://github.com/cyyjs/cvc"
-                }, {
-                    name: "Tool",
-                    description: "常用工具客户端",
-                    url: "https://github.com/cyyjs/tool",
-                    git: "https://github.com/cyyjs/tool"
-                }, {
-                    name: "Easy Mock",
-                    description: "可视化快速生成模拟数据的持久化服务。",
-                    url: "https://mock.cyyjs.top",
-                    git: "https://github.com/cyyjs/easy-mock"
-                }, {
-                    name: "cityMultiple",
-                    description: "省市多选jQuery插件 ",
-                    url: "http://cyyjs.github.io/cityMultiple/",
-                    git: "https://github.com/cyyjs/cityMultiple"
-                }, {
-                    name: "scss2css-vscode",
-                    description: "VSCode SCSS转CSS插件 ",
-                    url: "https://cyyjs.github.io/scss2css-vscode/",
-                    git: "https://github.com/cyyjs/scss2css-vscode"
-                }
-            ]
-        };
-    }
+  data() {
+    return {
+      productions: [
+        {
+          name: "CEditor",
+          description: "基于Hexo的博客发布客户端",
+          url: "http://ceditor.cyyjs.top/",
+          git: "https://github.com/cyyjs/ceditor"
+        }, {
+          name: "CVC",
+          description: "日历、省市选择、时段选择、拖放排序Vue组件",
+          url: "https://cyyjs.github.io/cvc",
+          git: "https://github.com/cyyjs/cvc"
+        }, {
+          name: "Tool",
+          description: "常用工具客户端",
+          url: "https://github.com/cyyjs/tool",
+          git: "https://github.com/cyyjs/tool"
+        }, {
+          name: "Easy Mock",
+          description: "可视化快速生成模拟数据的持久化服务。",
+          url: "https://mock.cyyjs.top",
+          git: "https://github.com/cyyjs/easy-mock"
+        }, {
+          name: "cityMultiple",
+          description: "省市多选jQuery插件 ",
+          url: "http://cyyjs.github.io/cityMultiple/",
+          git: "https://github.com/cyyjs/cityMultiple"
+        }, {
+          name: "scss2css-vscode",
+          description: "VSCode SCSS转CSS插件 ",
+          url: "https://cyyjs.github.io/scss2css-vscode/",
+          git: "https://github.com/cyyjs/scss2css-vscode"
+        }
+      ]
+    };
+  }
 };
 </script>
 <style scoped>

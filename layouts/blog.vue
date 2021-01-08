@@ -14,31 +14,31 @@ import Navbar from '~/components/nav/Navbar'
 import SidebarLeft from '~/components/nav/SidebarLeft'
 import MFooter from '~/components/footer'
 export default {
-    components: {
-        Navbar,
-        SidebarLeft,
-        MFooter
-    },
-    data() {
-        return {
-            isSidebarOpen: false
-        }
-    },
-    computed: {
-        pageClasses() {
-            return {
-                openpage: this.isSidebarOpen
-            }
-        }
-    },
-    methods: {
-        toggleSidebar(open) {
-            if (typeof open === 'boolean') {
-                this.isSidebarOpen = open
-            } else {
-                this.isSidebarOpen = !this.isSidebarOpen
-            }
-        }
+  components: {
+    Navbar,
+    SidebarLeft,
+    MFooter
+  },
+  data() {
+    return {
+      isSidebarOpen: false
     }
+  },
+  computed: {
+    pageClasses() {
+      return {
+        openpage: this.isSidebarOpen
+      }
+    }
+  },
+  methods: {
+    toggleSidebar(open) {
+      if (typeof open === 'boolean') {
+        this.isSidebarOpen = open
+      } else {
+        this.isSidebarOpen = !this.isSidebarOpen
+      }
+    }
+  }
 }
 </script>

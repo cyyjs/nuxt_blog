@@ -31,78 +31,78 @@
 import axios from '~/plugins/axios'
 let timer = null
 export default {
-    data() {
-        return {
-            query: '',
-            focused: false,
-            focusIndex: 0,
-            list: []
-        }
-    },
-    computed: {
-        showSuggestions() {
-            return this.focused && this.suggestions && this.suggestions.length
-        },
-        suggestions() {
-            const query = this.query.trim().toLowerCase()
-            if (!query) {
-                return
-            }
-            return this.list
-        }
-    },
-    methods: {
-        async change(event) {
-            this.query = event.target.value
-            clearTimeout(this.timer)
-            this.timer = setTimeout(async () => {
-                let {
-                    data: {
-                        data: { data }
-                    }
-                } = await axios.get('/blog/post', {
-                    params: {
-                        pageNo: 1,
-                        pageSize: 5,
-                        status: 1,
-                        title: this.query
-                    }
-                })
-                this.list = data
-            }, 500)
-        },
-        onUp() {
-            if (this.showSuggestions) {
-                if (this.focusIndex > 0) {
-                    this.focusIndex--
-                } else {
-                    this.focusIndex = this.suggestions.length - 1
-                }
-            }
-        },
-        onDown() {
-            if (this.showSuggestions) {
-                if (this.focusIndex < this.suggestions.length - 1) {
-                    this.focusIndex++
-                } else {
-                    this.focusIndex = 0
-                }
-            }
-        },
-        go(i) {
-            if (this.suggestions[i]) {
-                this.$router.push('/blog/' + this.suggestions[i]._id)
-                this.query = ''
-                this.focusIndex = 0
-            }
-        },
-        focus(i) {
-            this.focusIndex = i
-        },
-        unfocus() {
-            this.focusIndex = -1
-        }
+  data() {
+    return {
+      query: '',
+      focused: false,
+      focusIndex: 0,
+      list: []
     }
+  },
+  computed: {
+    showSuggestions() {
+      return this.focused && this.suggestions && this.suggestions.length
+    },
+    suggestions() {
+      const query = this.query.trim().toLowerCase()
+      if (!query) {
+        return
+      }
+      return this.list
+    }
+  },
+  methods: {
+    async change(event) {
+      this.query = event.target.value
+      clearTimeout(this.timer)
+      this.timer = setTimeout(async () => {
+        let {
+          data: {
+            data: { data }
+          }
+        } = await axios.get('/blog/post', {
+          params: {
+            pageNo: 1,
+            pageSize: 5,
+            status: 1,
+            title: this.query
+          }
+        })
+        this.list = data
+      }, 500)
+    },
+    onUp() {
+      if (this.showSuggestions) {
+        if (this.focusIndex > 0) {
+          this.focusIndex--
+        } else {
+          this.focusIndex = this.suggestions.length - 1
+        }
+      }
+    },
+    onDown() {
+      if (this.showSuggestions) {
+        if (this.focusIndex < this.suggestions.length - 1) {
+          this.focusIndex++
+        } else {
+          this.focusIndex = 0
+        }
+      }
+    },
+    go(i) {
+      if (this.suggestions[i]) {
+        this.$router.push('/blog/' + this.suggestions[i]._id)
+        this.query = ''
+        this.focusIndex = 0
+      }
+    },
+    focus(i) {
+      this.focusIndex = i
+    },
+    unfocus() {
+      this.focusIndex = -1
+    }
+  }
 }
 </script>
 

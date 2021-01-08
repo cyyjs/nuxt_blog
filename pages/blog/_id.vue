@@ -14,12 +14,12 @@
                 <blockquote v-if="blog.source">
                     <p>
                         本文首发于个人博客
-                        <a href="http://cyyjs.top" target="_blank">Cyy’s Blog</a>
+                        <a href="https://cyyjs.top" target="_blank">Cyy’s Blog</a>
                         <br>转载请注明出处
                         <a
-                            :href="'http://cyyjs.top/blog/'+blog._id"
+                            :href="'https://cyyjs.top/blog/'+blog._id"
                             target="_blank"
-                        >http://cyyjs.top/blog/{{blog._id}}</a>
+                        >https://cyyjs.top/blog/{{blog._id}}</a>
                     </p>
                 </blockquote>
                 <div v-html="content.content"></div>
@@ -54,110 +54,86 @@ import BackTop from '~/components/BackTop'
 import Toc from '~/components/nav/toc';
 import axios from '~/plugins/axios'
 import markdown from '~/plugins/md'
-// import Gitment from 'gitment'
-// import '~/assets/css/gitment.css'
-// const CommentTheme = {
-//     render(state, instance) {
-//         const container = document.createElement('div')
-//         container.lang = 'zh'
-//         container.className = 'gitment-container gitment-root-container'
-//         console.log(instance)
-//         container.appendChild(instance.renderHeader(state, instance))
-//         container.appendChild(instance.renderEditor(state, instance))
-//         container.appendChild(instance.renderComments(state, instance))
-//         // container.appendChild(instance.renderFooter(state, instance))
-//         return container
-//     }
-// }
-export default {
-    layout: 'blog',
-    components: {
-        BackTop,
-        Toc
-    },
-    async asyncData({ route, error }) {
-        let {
-            data: { data }
-        } = await axios.get('/blog/post/' + route.params.id + '?guide=1')
-        if (!data._id) {
-            error({ statusCode: 404 })
-        }
-        return {
-            blog: data
-        }
-    },
-    computed: {
-        content() {
-            let toc = []
-            let content = markdown.render(this.blog.content, {
-                tocCallback: function (tocMarkdown, tocArray, tocHtml) {
-                    toc = tocArray
-                }
-            })
-            return {
-                content,
-                toc
-            }
-        },
-        prev() {
-            if (this.blog.link.prev._id) {
-                return this.blog.link.prev
-            }
-            return false
-        },
-        next() {
-            if (this.blog.link.next._id) {
-                return this.blog.link.next
-            }
-            return false
-        }
-    },
-    head() {
-        return {
-            title: this.blog.title,
-            meta: [
-                {
-                    hid: 'keywords',
-                    name: 'keywords',
-                    content: 'cyy,博客,前端,' + this.blog.tags.join(',')
-                },
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: this.blog.description
-                }
-            ]
-        }
-    },
-    methods: {
-        utterances: function () {
-            let comment = document.getElementById('comment')
-            if (!comment) {
-                return
-            }
 
-            let script = document.createElement('script')
-            script.src = 'https://utteranc.es/client.js'
-            script.setAttribute('repo', 'cyyjs/blog_comment')
-            script.setAttribute('theme', 'github-light')
-            script.setAttribute('issue-term', `${this.blog.title}`)
-            script.setAttribute('crossorigin', 'anonymous')
-            comment.appendChild(script)
-        }
-    },
-    mounted() {
-        this.utterances()
-        // new Gitment({
-        //     id: this.blog._id, // 可选。默认为 location.href
-        //     owner: 'cyyjs',
-        //     repo: 'blog_comment',
-        //     oauth: {
-        //         client_id: 'ac10f3c942ffb50e2d9b',
-        //         client_secret: 'be6b45d2000cb68ce4ecc23f3d34eb4737091e4f'
-        //     },
-        //     theme: CommentTheme
-        // }).render('comment')
+export default {
+  layout: 'blog',
+  components: {
+    BackTop,
+    Toc
+  },
+  async asyncData({ route, error }) {
+    let {
+      data: { data }
+    } = await axios.get('/blog/post/' + route.params.id + '?guide=1')
+    if (!data._id) {
+      error({ statusCode: 404 })
     }
+    return {
+      blog: data
+    }
+  },
+  computed: {
+    content() {
+      let toc = []
+      let content = markdown.render(this.blog.content, {
+        tocCallback: function (tocMarkdown, tocArray, tocHtml) {
+          toc = tocArray
+        }
+      })
+      return {
+        content,
+        toc
+      }
+    },
+    prev() {
+      if (this.blog.link.prev._id) {
+        return this.blog.link.prev
+      }
+      return false
+    },
+    next() {
+      if (this.blog.link.next._id) {
+        return this.blog.link.next
+      }
+      return false
+    }
+  },
+  head() {
+    return {
+      title: this.blog.title,
+      meta: [
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'cyy,博客,前端,' + this.blog.tags.join(',')
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.blog.description
+        }
+      ]
+    }
+  },
+  methods: {
+    utterances: function () {
+      let comment = document.getElementById('comment')
+      if (!comment) {
+        return
+      }
+
+      let script = document.createElement('script')
+      script.src = 'https://utteranc.es/client.js'
+      script.setAttribute('repo', 'cyyjs/blog_comment')
+      script.setAttribute('theme', 'github-light')
+      script.setAttribute('issue-term', `${this.blog.title}`)
+      script.setAttribute('crossorigin', 'anonymous')
+      comment.appendChild(script)
+    }
+  },
+  mounted() {
+    this.utterances()
+  }
 }
 </script>
 <style lang="scss" scoped>

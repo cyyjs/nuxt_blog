@@ -30,77 +30,77 @@
 import axios from '~/plugins/axios'
 import BackTop from '~/components/BackTop'
 export default {
-    props: {
-        favoriteInput: {
-            type: String,
-            default: ''
-        }
-    },
-    components: {
-        BackTop
-    },
-    async asyncData({ env }) {
-        let {
-            data: {
-                data: { data }
-            }
-        } = await axios.get('/favorite')
-        let list = data || []
-        return {
-            list
-        }
-    },
-    data() {
-        return {}
-    },
-    head() {
-        return {
-            title: '收藏'
-        }
-    },
-    computed: {
-        oDataMap() {
-            let dataMap = {}
-            this.list.forEach(i => {
-                dataMap[i.category] = dataMap[i.category] || []
-                i.updated = this.$util.dateFormat(i.updated)
-                dataMap[i.category].push(i)
-            })
-            return dataMap
-        },
-        dataMap() {
-            let map = {}
-            if (!this.favoriteInput.length) {
-                return this.oDataMap
-            } else {
-                for (let k in this.oDataMap) {
-                    let list = this.oDataMap[k].filter(i =>
-                        i.title
-                            .toLocaleUpperCase()
-                            .includes(this.favoriteInput.toLocaleUpperCase())
-                    )
-                    if (list.length) {
-                        map[k] = list
-                    }
-                }
-                return map
-            }
-        }
-    },
-    methods: {
-        fetchData() {
-            this.$get('/favorite').then(({ data: { data } }) => {
-                let list = data || []
-                let dataMap = {}
-                list.forEach(i => {
-                    dataMap[i.category] = dataMap[i.category] || []
-                    i.updated = this.$util.dateFormat(i.updated)
-                    dataMap[i.category].push(i)
-                })
-                this.oDataMap = dataMap
-            })
-        }
+  props: {
+    favoriteInput: {
+      type: String,
+      default: ''
     }
+  },
+  components: {
+    BackTop
+  },
+  async asyncData({ env }) {
+    let {
+      data: {
+        data: { data }
+      }
+    } = await axios.get('/favorite')
+    let list = data || []
+    return {
+      list
+    }
+  },
+  data() {
+    return {}
+  },
+  head() {
+    return {
+      title: '收藏'
+    }
+  },
+  computed: {
+    oDataMap() {
+      let dataMap = {}
+      this.list.forEach(i => {
+        dataMap[i.category] = dataMap[i.category] || []
+        i.updated = this.$util.dateFormat(i.updated)
+        dataMap[i.category].push(i)
+      })
+      return dataMap
+    },
+    dataMap() {
+      let map = {}
+      if (!this.favoriteInput.length) {
+        return this.oDataMap
+      } else {
+        for (let k in this.oDataMap) {
+          let list = this.oDataMap[k].filter(i =>
+            i.title
+              .toLocaleUpperCase()
+              .includes(this.favoriteInput.toLocaleUpperCase())
+          )
+          if (list.length) {
+            map[k] = list
+          }
+        }
+        return map
+      }
+    }
+  },
+  methods: {
+    fetchData() {
+      this.$get('/favorite').then(({ data: { data } }) => {
+        let list = data || []
+        let dataMap = {}
+        list.forEach(i => {
+          dataMap[i.category] = dataMap[i.category] || []
+          i.updated = this.$util.dateFormat(i.updated)
+          dataMap[i.category].push(i)
+        })
+        this.oDataMap = dataMap
+      })
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

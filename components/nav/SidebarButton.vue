@@ -9,12 +9,12 @@
 <script>
 import SwitchTheme from '~/components/SwitchTheme';
 export default {
-    components: { SwitchTheme },
-    data() {
-        return {
-            open: false
-        }
+  components: { SwitchTheme },
+  data() {
+    return {
+      open: false
     }
+  }
 }
 </script>
 

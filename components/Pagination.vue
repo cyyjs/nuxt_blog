@@ -9,59 +9,59 @@
 </template>
 <script>
 export default {
-    props: {
-        pageNo: {
-            type: Number,
-            default: 1
-        },
-        pageSize: Number,
-        total: Number
+  props: {
+    pageNo: {
+      type: Number,
+      default: 1
     },
-    computed: {
-        _pageSize() {
-            return this.pageSize || 10
-        },
-        pageCount() {
-            return Math.ceil((this.total || 0) / this._pageSize)
-        },
-        nums() {
-            let s = []
-            if (this.pageNo + 2 > this.pageCount) {
-                for (
-                    let p = this.pageCount;
-                    p > 0 && p > this.pageCount - 5;
-                    p--
-                ) {
-                    s.unshift(p)
-                }
-            } else if (this.pageNo - 2 > 1) {
-                for (
-                    let p = this.pageNo - 2;
-                    p <= this.pageNo + 2 && p <= this.pageCount;
-                    p++
-                ) {
-                    s.push(p)
-                }
-            } else {
-                for (let p = 1; p <= 5 && p <= this.pageCount; p++) {
-                    s.push(p)
-                }
-            }
-            return s
-        }
+    pageSize: Number,
+    total: Number
+  },
+  computed: {
+    _pageSize() {
+      return this.pageSize || 10
     },
-    methods: {
-        prev() {
-            if (this.pageNo > 1) {
-                this.$emit('change', this.pageNo - 1)
-            }
-        },
-        next() {
-            if (this.pageNo < this.pageCount) {
-                this.$emit('change', this.pageNo + 1)
-            }
+    pageCount() {
+      return Math.ceil((this.total || 0) / this._pageSize)
+    },
+    nums() {
+      let s = []
+      if (this.pageNo + 2 > this.pageCount) {
+        for (
+          let p = this.pageCount;
+          p > 0 && p > this.pageCount - 5;
+          p--
+        ) {
+          s.unshift(p)
         }
+      } else if (this.pageNo - 2 > 1) {
+        for (
+          let p = this.pageNo - 2;
+          p <= this.pageNo + 2 && p <= this.pageCount;
+          p++
+        ) {
+          s.push(p)
+        }
+      } else {
+        for (let p = 1; p <= 5 && p <= this.pageCount; p++) {
+          s.push(p)
+        }
+      }
+      return s
     }
+  },
+  methods: {
+    prev() {
+      if (this.pageNo > 1) {
+        this.$emit('change', this.pageNo - 1)
+      }
+    },
+    next() {
+      if (this.pageNo < this.pageCount) {
+        this.$emit('change', this.pageNo + 1)
+      }
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

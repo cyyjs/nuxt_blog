@@ -15,7 +15,6 @@
     },
     "dependencies": {
         "axios": "^0.18.1",
-        "gitment": "0.0.3",
         "highlight.js": "^9.11.0",
         "markdown-it": "^8.4.1",
         "markdown-it-abbr": "^1.0.4",

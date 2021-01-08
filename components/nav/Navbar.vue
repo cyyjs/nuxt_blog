@@ -22,14 +22,14 @@ import SidebarButton from '~/components/nav/SidebarButton'
 import SearchBox from '~/components/nav/SearchBox'
 import SwitchTheme from '~/components/SwitchTheme'
 export default {
-    components: { SidebarButton, SearchBox, SwitchTheme },
-    computed: {
-        activeClass() {
-            return this.$route.path.startsWith('/blog')
-                ? 'nuxt-link-exact-active'
-                : ''
-        }
+  components: { SidebarButton, SearchBox, SwitchTheme },
+  computed: {
+    activeClass() {
+      return this.$route.path.startsWith('/blog')
+        ? 'nuxt-link-exact-active'
+        : ''
     }
+  }
 }
 </script>
 <style lang="scss" scoped>
