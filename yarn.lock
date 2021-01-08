@@ -4064,13 +4064,6 @@ git-url-parse@^11.1.2:
   dependencies:
     git-up "^4.0.0"
 
-gitment@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.npm.taobao.org/gitment/download/gitment-0.0.3.tgz#dbccbad7480b1345b656913bd70eff792a7b38b8"
-  integrity sha1-28y610gLE0W2VpE71w7/eSp7OLg=
-  dependencies:
-    mobx "^3.1.7"
-
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/glob-parent/download/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -4254,10 +4247,10 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.npm.taobao.org/hex-color-regex/download/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha1-TAb8y0YC/iYCs8k9+C1+fb8aio4=
 
-highlight.js@^9.11.0:
-  version "9.18.3"
-  resolved "https://registry.npm.taobao.org/highlight.js/download/highlight.js-9.18.3.tgz#a1a0a2028d5e3149e2380f8a865ee8516703d634"
-  integrity sha1-oaCiAo1eMUniOA+Khl7oUWcD1jQ=
+highlight.js@^10.4.1:
+  version "10.4.1"
+  resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.4.1.tgz#d48fbcf4a9971c4361b3f95f302747afe19dbad0"
+  integrity sha512-yR5lWvNz7c85OhVAEAeFhVCc/GV4C30Fjzc/rCP0aCWzc1UUOPUk55dK/qdwTZHBvMZo+eZ2jpk62ndX/xMFlg==
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -5489,11 +5482,6 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   integrity sha1-2Rzv1i0UNsoPQWIOJRKI1CAJne8=
   dependencies:
     minimist "^1.2.5"
-
-mobx@^3.1.7:
-  version "3.6.2"
-  resolved "https://registry.npm.taobao.org/mobx/download/mobx-3.6.2.tgz#fb9f5ff5090539a1ad54e75dc4c098b602693320"
-  integrity sha1-+59f9QkFOaGtVOddxMCYtgJpMyA=
 
 move-concurrently@^1.0.1:
   version "1.0.1"
