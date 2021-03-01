@@ -72,6 +72,11 @@ export default {
       blog: data
     }
   },
+  data () {
+    return {
+      script: null
+    }
+  },
   computed: {
     content() {
       let toc = []
@@ -96,6 +101,9 @@ export default {
         return this.blog.link.next
       }
       return false
+    },
+    isDark () {
+      return this.$store.state.setting.themeIsDark
     }
   },
   head() {
@@ -115,24 +123,30 @@ export default {
       ]
     }
   },
+  watch: {
+    isDark() {
+      this.utterances()
+    }
+  },
   methods: {
     utterances: function () {
       let comment = document.getElementById('comment')
       if (!comment) {
         return
       }
-
-      let script = document.createElement('script')
-      script.src = 'https://utteranc.es/client.js'
-      script.setAttribute('repo', 'cyyjs/blog_comment')
-      script.setAttribute('theme', 'github-light')
-      script.setAttribute('issue-term', `${this.blog.title}`)
-      script.setAttribute('crossorigin', 'anonymous')
-      comment.appendChild(script)
+      if (this.script) {
+        while(comment.hasChildNodes()) {
+          comment.removeChild(comment.firstChild)
+        }
+      }
+      this.script = document.createElement('script')
+      this.script.src = 'https://utteranc.es/client.js'
+      this.script.setAttribute('repo', 'cyyjs/blog_comment')
+      this.script.setAttribute('theme', this.isDark ? 'github-dark': 'github-light')
+      this.script.setAttribute('issue-term', `${this.blog.title}`)
+      this.script.setAttribute('crossorigin', 'anonymous')
+      comment.appendChild(this.script)
     }
-  },
-  mounted() {
-    this.utterances()
   }
 }
 </script>

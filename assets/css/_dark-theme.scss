@@ -59,6 +59,10 @@ $forecolor: #eee!important;
     .content {
       background: $darkBgColor;
       color: $forecolor;
+      img {
+        filter: brightness(69%);
+        box-shadow: 0 0 20px 0 #000;
+      }
     }
     blockquote {
       background-color: $darkBorderColor;

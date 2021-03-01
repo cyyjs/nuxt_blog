@@ -51,10 +51,12 @@ export default {
       if (type === 2) {
         document.body.classList.add('dark');
         sessionStorage.setItem('dark', 'true')
+        this.$store.commit('setting/setDark', true)
         this.themeIndex = 2
       } else if(type === 1){
         document.body.classList.remove('dark');
         sessionStorage.setItem('dark', 'false')
+        this.$store.commit('setting/setDark', false)
         this.themeIndex = 1
       } else {
         const isDark = this.darkMode && this.darkMode.matches
@@ -63,6 +65,7 @@ export default {
         } else {
           document.body.classList.remove('dark');
         }
+        this.$store.commit('setting/setDark', isDark)
         sessionStorage.removeItem('dark')
         this.themeIndex = 0
       }
