@@ -9,7 +9,7 @@ $forecolor: #eee!important;
   .navbar {
     background-color: $darkBgColor;
     border-bottom: 1px solid $darkBorderColor;
-    & svg path {
+    &>.sidebar-button>svg path {
       fill: $forecolor;
     }
     .search-box input {

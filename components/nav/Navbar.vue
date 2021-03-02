@@ -2,8 +2,7 @@
     <header class="navbar">
         <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
         <nuxt-link to="/">
-            <img class="logo can-hide" src="~assets/img/logo.png" alt="">
-            <span class="site-name can-hide">Cyy's Blog</span>
+            <logo-img class="logo can-hide"/>
         </nuxt-link>
         <div class="links">
             <search-box></search-box>
@@ -21,8 +20,9 @@
 import SidebarButton from '~/components/nav/SidebarButton'
 import SearchBox from '~/components/nav/SearchBox'
 import SwitchTheme from '~/components/SwitchTheme'
+import LogoImg from './Logo'
 export default {
-  components: { SidebarButton, SearchBox, SwitchTheme },
+  components: { SidebarButton, SearchBox, SwitchTheme, LogoImg },
   computed: {
     activeClass() {
       return this.$route.path.startsWith('/blog')
