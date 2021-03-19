@@ -40,6 +40,7 @@ export default {
             box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
             transition: 0.2s ease-in-out;
             padding: 20px;
+            background: #adb;
         }
     }
 }
