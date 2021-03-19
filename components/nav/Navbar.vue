@@ -1,6 +1,6 @@
 <template>
     <header class="navbar">
-        <SidebarButton @toggle-sidebar="$emit('toggle-sidebar')"/>
+        <sidebar-button @toggle-sidebar="$emit('toggle-sidebar')"/>
         <nuxt-link to="/">
             <logo-img class="logo can-hide"/>
         </nuxt-link>
@@ -11,6 +11,7 @@
                 <nuxt-link :class="['nav-item',activeClass]" to="/blog"><i class="iconfont icon-wenzhang1"></i> Blog</nuxt-link>
                 <nuxt-link class="nav-item" to="/favorite"><i class="iconfont icon-shoucang"></i> Favorite</nuxt-link>
                 <nuxt-link class="nav-item" to="/about"><i class="iconfont icon-wo"></i> About</nuxt-link>
+                <a class="nav-item" target="_blank" href="https://github.com/cyyjs"><i class="iconfont icon-st-github"></i> GitHub</a>
                 <switch-theme></switch-theme>
             </nav>
         </div>

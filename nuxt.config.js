@@ -27,7 +27,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://i.alibt.top/picgo/logo/favicon.ico' },
-      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_955772_jl9si16wn4i.css' }
+      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_955772_qzyvj0u2dqi.css' }
     ]
   },
   css: [

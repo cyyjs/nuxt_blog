@@ -9,8 +9,8 @@ $forecolor: #eee!important;
   .navbar {
     background-color: $darkBgColor;
     border-bottom: 1px solid $darkBorderColor;
-    &>.sidebar-button>svg path {
-      fill: $forecolor;
+    &>.sidebar-button {
+      color: $forecolor;
     }
     .search-box input {
       background-color: $darkBgColor;
@@ -39,6 +39,13 @@ $forecolor: #eee!important;
     border-right: $darkBorderColor;
     a:not(.nuxt-link-exact-active) {
       color: $forecolor;
+    }
+    .sidebar-head {
+      background-color: $darkBgColor2;
+      &>.head {
+        border: 5px solid $darkBorderColor;
+        box-shadow: 0 1px 5px rgba(255, 255, 255, 0.16)!important;
+      }
     }
   }
   #comment {

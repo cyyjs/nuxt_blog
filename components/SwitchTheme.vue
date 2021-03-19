@@ -1,5 +1,9 @@
 <template>
-  <a class="nav-item icon-theme" @click="changeTheme"><i :class="['iconfont', themeList[themeIndex]]"></i> {{ hideText?'':themeText[themeIndex]}}</a>
+<span @click="changeTheme">
+  <slot>
+    <a class="nav-item icon-theme"><i :class="['iconfont', themeList[themeIndex]]"></i> {{ hideText?'':themeText[themeIndex]}}</a>
+  </slot>
+</span>
 </template>
 
 <script>
@@ -82,6 +86,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.nav-item {
+  margin-left: 1.5rem;
+  cursor: pointer;
+}
 </style>
