@@ -3,8 +3,8 @@ module.exports = {
     ** Headers of the page
     */
   head: {
-    title: 'Cyy blog',
-    titleTemplate: "%s - Cyy's Blog", // title is now "My Example App - Yay!"
+    title: 'Cyyjs',
+    titleTemplate: "%s - Cyyjs", // title is now "My Example App - Yay!"
     meta: [
       { charset: 'utf-8' },
       {
@@ -18,7 +18,7 @@ module.exports = {
         name: 'keywords',
         content: 'cyyjs, 博客, 前端, JavaScript, Node.js, Vue, nuxt, Electron'
       },
-      { name: 'author', content: 'cyy0418@qq.com' },
+      { name: 'author', content: 'cyyjs@cyyjs.com' },
       {
         hid: 'description',
         name: 'description',
@@ -27,7 +27,7 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://i.alibt.top/picgo/logo/favicon.ico' },
-      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_955772_qzyvj0u2dqi.css' }
+        { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_955772_f8vajunptqc.css' }
     ]
   },
   css: [

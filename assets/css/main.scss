@@ -131,7 +131,9 @@ ul {
 h1 {
     font-size: 1.65rem;
 }
-
+h2 {
+    font-size: 1.4rem;
+}
 h3 {
     font-size: 1.35rem;
 }
@@ -165,9 +167,10 @@ h3 {
 .page {
     .page-head {
         margin: 0 auto;
-        padding: 2rem 2.5rem; // margin-top: 4.6rem;
+        padding: 1.5rem; // margin-top: 4.6rem;
         margin-bottom: 20px;
         background: #fff;
+        border-radius: 3px;
         h1 {
             margin-bottom: 0.67em;
         }
@@ -179,6 +182,7 @@ h3 {
         }
     }
     .content {
+        border-radius: 3px;
         margin: 0 auto;
         padding: 2rem 2.5rem;
         background: #fff;
@@ -212,7 +216,6 @@ h3 {
     left: 0;
     bottom: 0;
     box-sizing: border-box;
-    border-right: 1px solid #eaecef;
     overflow-y: auto;
 }
 

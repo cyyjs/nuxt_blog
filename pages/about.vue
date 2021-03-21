@@ -75,6 +75,11 @@
 </template>
 <script>
 export default {
+  head() {
+    return {
+      title: 'About'
+    }
+  },
   data() {
     return {
       skills1: ["HTML", "CSS", "JS", "ES6/7", "Vue", "Webpack", "SCSS"],
@@ -86,7 +91,7 @@ export default {
         {
           name: "博客系统",
           logo: "https://qn.alibt.top/4d9a0059-bba8-4e0e-b6e5-f7912d2fe7f7.png",
-          description: "个人博客",
+          description: "个人博客,支持移动端响应式",
           url: "http://cyyjs.top",
           platform: "Web、H5",
         },

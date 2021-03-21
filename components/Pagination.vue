@@ -95,7 +95,8 @@ export default {
             cursor: pointer;
             box-sizing: border-box;
             text-align: center;
-
+            border-radius: 15px;
+            padding: 0 10px;
             &:hover {
                 box-shadow: 1px 2px 2px rgba(151, 151, 151, 0.6);
             }

@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar-button">
-    <i class="iconfont icon-ziyuan icon toggle" @click="$emit('toggle-sidebar')"></i>
+    <i class="iconfont icon-menu icon toggle" @click="$emit('toggle-sidebar')"></i>
     <switch-theme hide-text></switch-theme>
   </div>
 </template>

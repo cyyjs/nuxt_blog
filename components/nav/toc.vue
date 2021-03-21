@@ -214,7 +214,7 @@ export default {
             white-space: nowrap;
         }
         & > li > a {
-            padding: 3px 10px;
+            padding: 4px 10px;
         }
         li li a {
             padding: 2px 10px 2px 20px;

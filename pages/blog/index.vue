@@ -46,7 +46,7 @@
               v-for="t in p.tags"
               >{{ t }}</span
             >
-            <span class="time">{{ $util.dateFormat(p.created) }}</span>
+            <span class="time"><i class="iconfont icon-riqi"></i>{{ $util.dateFormat(p.created) }}</span>
           </div>
         </div>
         <pagination
@@ -82,6 +82,11 @@ export default {
       page: data,
       tags,
     };
+  },
+  head () {
+    return {
+      title: 'Blog'
+    }
   },
   data() {
     return {

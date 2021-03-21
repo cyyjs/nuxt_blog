@@ -6,7 +6,7 @@
                 <h1>{{blog.title}}</h1>
                 <div class="page-head-footer">
                     <span class="tags" v-for="tag in blog.tags" :key="tag">{{tag}}</span>
-                    <span class="time">{{$util.dateFormat(blog.updated)}}</span>
+                    <span class="time"><i class="iconfont icon-riqi"></i> {{$util.dateFormat(blog.created)}}</span>
                 </div>
             </div>
 

@@ -17,6 +17,11 @@
 </template>
 <script>
 export default {
+  head() {
+    return {
+      title: 'Project'
+    }
+  },
   data() {
     return {
       productions: [
@@ -31,20 +36,30 @@ export default {
           url: "https://cyyjs.github.io/cvc",
           git: "https://github.com/cyyjs/cvc"
         }, {
-          name: "Tool",
-          description: "常用工具客户端",
-          url: "https://github.com/cyyjs/tool",
-          git: "https://github.com/cyyjs/tool"
+          name: "electron-dev-runner",
+          description: "在Electron开发环境使用的启动工具,支持TS、Vite、自动重启",
+          url: "https://github.com/cyyjs/electron-dev-runner",
+          git: "https://github.com/cyyjs/electron-dev-runner"
         }, {
-          name: "Easy Mock",
-          description: "可视化快速生成模拟数据的持久化服务。",
-          url: "https://mock.cyyjs.top",
-          git: "https://github.com/cyyjs/easy-mock"
+          name: "electron-router",
+          description: "electron主进程与渲染进程ipc通信工具。",
+          url: "https://github.com/cyyjs/electron-router",
+          git: "https://github.com/cyyjs/electron-router"
         }, {
-          name: "cityMultiple",
-          description: "省市多选jQuery插件 ",
-          url: "http://cyyjs.github.io/cityMultiple/",
-          git: "https://github.com/cyyjs/cityMultiple"
+          name: "gitlab-repo-db",
+          description: "基于Gitlab 仓库文件存储的数据库",
+          url: "https://github.com/cyyjs/gitlab-repo-db",
+          git: "https://github.com/cyyjs/gitlab-repo-db"
+        }, {
+          name: "ctm-cli",
+          description: "基于模板快速创建项目的脚手架工具",
+          url: "https://github.com/cyyjs/ctm-cli",
+          git: "https://github.com/cyyjs/ctm-cli"
+        }, {
+          name: "npm-extensions",
+          description: "npm包快速搜索chrome插件",
+          url: "https://chrome.google.com/webstore/detail/npm-%E6%90%9C%E7%B4%A2%E5%B7%A5%E5%85%B7/nokkfeigeiimdbmjfangcilebeginckf",
+          git: "https://github.com/cyyjs/npm-extensions"
         }, {
           name: "scss2css-vscode",
           description: "VSCode SCSS转CSS插件 ",

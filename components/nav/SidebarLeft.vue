@@ -31,6 +31,9 @@ export default {
         padding: 2.6rem 0;
         margin-bottom: 20px;
         background-color: #efefef;
+        background-image: url(https://picsum.photos/200);
+        background-repeat: no-repeat;
+        background-size: cover;
         .head {
             display: inline-block;
             width: 120px;
@@ -40,7 +43,7 @@ export default {
             box-shadow: 0 14px 25px rgba(0, 0, 0, 0.16);
             transition: 0.2s ease-in-out;
             padding: 20px;
-            background: #adb;
+            background: rgba(47, 55, 61, 0.8);
         }
     }
 }

@@ -7,7 +7,7 @@
         <div class="features">
             <div class="feature">
                 <nuxt-link to="/blog">Blog</nuxt-link>
-                <p>在日常中学习和总结的一些经验。</p>
+                <p>日常工作和学习种总结的一些经验。</p>
             </div>
             <div class="feature">
                 <nuxt-link to="/favorite">Favorite</nuxt-link>

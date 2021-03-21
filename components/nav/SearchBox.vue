@@ -209,7 +209,7 @@ export default {
         }
 
         input:focus {
-            width: 8rem;
+            width: 14rem;
         }
     }
 }

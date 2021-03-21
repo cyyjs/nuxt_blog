@@ -55,7 +55,7 @@ export default {
   },
   head() {
     return {
-      title: '收藏'
+      title: 'Favorite'
     }
   },
   computed: {
