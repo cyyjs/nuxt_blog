@@ -27,12 +27,16 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://i.alibt.top/picgo/logo/favicon.ico' },
-        { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_955772_f8vajunptqc.css' }
-    ]
+      { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_955772_f8vajunptqc.css' }
+    ],
+    script: [
+      { src: '/js/drift.js', async: true, defer: true }
+    ],
   },
   css: [
     { src: '~assets/css/main.scss', lang: 'scss' } // 指定 scss 而非 sass
   ],
+  
   /*
     ** Customize the progress bar color
     */
