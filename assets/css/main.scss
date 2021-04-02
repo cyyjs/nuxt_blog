@@ -67,14 +67,15 @@ ul {
         padding: 0;
         margin: 0;
         li {
-            padding: 5px;
-            background: #eee;
+            padding: 6px;
+            background: #3eaf7c;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             border-radius: 50%;
             margin-bottom: 10px;
             cursor: pointer;
             &:hover {
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-                background: #ccc;
+                box-shadow: 0 0 8px 4px rgb(0 0 0 / 16%);
+                background: #3eaf6d;
             }
             img {
                 width: 28px;

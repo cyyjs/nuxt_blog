@@ -220,13 +220,17 @@ export default {
             padding: 2px 10px 2px 20px;
             font-weight: 400;
         }
+        &> li {
+          .active1 {
+              color: $accentColor;
+              padding-left: 7px;
+              border-left: 3px solid $accentColor;
+          }
+          .active2 {
+              color: $accentColor;
+          }
+        }
     }
 }
-.active1 {
-    color: $accentColor;
-    border-left: 2px solid $accentColor;
-}
-.active2 {
-    color: $accentColor;
-}
+
 </style>

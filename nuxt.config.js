@@ -30,7 +30,7 @@ module.exports = {
       { rel: 'stylesheet', type: 'text/css', href: '//at.alicdn.com/t/font_955772_f8vajunptqc.css' }
     ],
     script: [
-      { src: '/js/drift.js', async: true, defer: true }
+      // { src: '/js/drift.js', async: true, defer: true } // 在线聊天
     ],
   },
   css: [
