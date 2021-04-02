@@ -12,5 +12,6 @@ COPY package.json /app/package.json
 COPY yarn.lock /app/yarn.lock
 RUN yarn install --production
 COPY --from=build /app/.nuxt /app/.nuxt
+COPY --from=build /app/static /app/static
 EXPOSE 8004
 CMD [ "yarn", "start" ]
