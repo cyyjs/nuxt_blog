@@ -28,7 +28,7 @@ export default {
         {
           name: "CEditor",
           description: "基于Hexo的博客发布客户端",
-          url: "http://ceditor.cyyjs.top/",
+          url: "http://ceditor.alibt.top/",
           git: "https://github.com/cyyjs/ceditor"
         }, {
           name: "CVC",
