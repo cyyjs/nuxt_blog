@@ -16,13 +16,13 @@ module.exports = {
       {
         hid: 'keywords',
         name: 'keywords',
-        content: 'cyyjs, 博客, 前端, JavaScript, Node.js, Vue, nuxt, Electron'
+        content: 'cyyjs, 个人网站, 博客, 前端, Vue, js, JavaScript, Node.js, nuxt, Electron'
       },
-      { name: 'author', content: 'cyyjs@cyyjs.com' },
+      { name: 'author', content: 'cyyjs@cyyjs.top' },
       {
         hid: 'description',
         name: 'description',
-        content: 'Cyy的个人博客，技术分享'
+        content: 'Cyy的个人网站、博客、技术分享'
       }
     ],
     link: [
@@ -70,5 +70,14 @@ module.exports = {
   },
   env: {
     baseUrl: process.env.BASE_URL
+  },
+  buildModules: [
+    '@nuxtjs/pwa',
+  ],
+  pwa: {
+    name: 'Cyyjs',
+    short_name: 'Cyyjs',
+    lang: 'zh',
+    display: 'standalone',
   }
 }
