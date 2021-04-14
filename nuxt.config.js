@@ -75,9 +75,11 @@ module.exports = {
     '@nuxtjs/pwa',
   ],
   pwa: {
-    name: 'Cyyjs',
-    short_name: 'Cyyjs',
-    lang: 'zh',
-    display: 'standalone',
+    manifest: {
+      name: 'Cyyjs',
+      short_name: 'Cyyjs',
+      lang: 'zh',
+      display: 'minimal-ui',
+    }
   }
 }
