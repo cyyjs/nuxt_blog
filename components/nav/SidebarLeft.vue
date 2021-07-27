@@ -1,23 +1,31 @@
 <template>
-    <div class="sidebar">
-        <div class="sidebar-head">
-            <div class="head">
-                <switch-theme>
-                    <img src="~assets/img/logo.svg" alt="head">
-                </switch-theme>
-            </div>
-        </div>
-        <nav class="nav-links" @click="$emit('toggle-sidebar')">
-            <nuxt-link class="nav-item" to="/"><i class="iconfont icon-zhuye"></i> Home</nuxt-link>
-            <nuxt-link class="nav-item" to="/blog"><i class="iconfont icon-wenzhang1"></i> Blog</nuxt-link>
-            <nuxt-link class="nav-item" to="/favorite"><i class="iconfont icon-shoucang"></i> Favorite</nuxt-link>
-            <nuxt-link class="nav-item" to="/about"><i class="iconfont icon-wo"></i> About</nuxt-link>
-            <a class="nav-item" target="_blank" href="https://github.com/cyyjs"><i class="iconfont icon-st-github"></i> GitHub</a>
-        </nav>
+  <div class="sidebar">
+    <div class="sidebar-head">
+      <div class="head">
+        <switch-theme>
+          <img src="~assets/img/logo.svg" alt="head">
+        </switch-theme>
+      </div>
     </div>
+    <nav class="nav-links" @click="$emit('toggle-sidebar')">
+      <nuxt-link class="nav-item" to="/">
+        <i class="iconfont icon-zhuye" /> Home
+      </nuxt-link>
+      <nuxt-link class="nav-item" to="/blog">
+        <i class="iconfont icon-wenzhang1" /> Blog
+      </nuxt-link>
+      <nuxt-link class="nav-item" to="/favorite">
+        <i class="iconfont icon-shoucang" /> Favorite
+      </nuxt-link>
+      <nuxt-link class="nav-item" to="/about">
+        <i class="iconfont icon-wo" /> About
+      </nuxt-link>
+      <a class="nav-item" target="_blank" href="https://github.com/cyyjs"><i class="iconfont icon-st-github" /> GitHub</a>
+    </nav>
+  </div>
 </template>
 <script>
-import SwitchTheme from '~/components/SwitchTheme';
+import SwitchTheme from '~/components/SwitchTheme'
 export default {
   components: {
     SwitchTheme
@@ -63,4 +71,3 @@ export default {
     }
 }
 </style>
-

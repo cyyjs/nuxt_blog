@@ -1,24 +1,24 @@
 <template>
-    <div class="toc" v-if="show">
-        <ul class="toc-list">
-            <li v-for="(m,i) in data.list" :key="i">
-                <a
-                    :href="'#'+m.anchor"
-                    @click.prevent="jump(m.anchor)"
-                    :class="[active1==m.anchor?'active1':'']"
-                >{{m.content}}</a>
-                <ul v-if="m.children">
-                    <li v-for="(n,j) in m.children" :key="j">
-                        <a
-                            :href="'#'+n.anchor"
-                            @click.prevent="jump(n.anchor)"
-                            :class="[active2==n.anchor?'active2':'']"
-                        >{{n.content}}</a>
-                    </li>
-                </ul>
-            </li>
+  <div v-if="show" class="toc">
+    <ul class="toc-list">
+      <li v-for="(m,i) in data.list" :key="i">
+        <a
+          :href="'#'+m.anchor"
+          :class="[active1==m.anchor?'active1':'']"
+          @click.prevent="jump(m.anchor)"
+        >{{ m.content }}</a>
+        <ul v-if="m.children">
+          <li v-for="(n,j) in m.children" :key="j">
+            <a
+              :href="'#'+n.anchor"
+              :class="[active2==n.anchor?'active2':'']"
+              @click.prevent="jump(n.anchor)"
+            >{{ n.content }}</a>
+          </li>
         </ul>
-    </div>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
@@ -28,7 +28,7 @@ export default {
       default: () => []
     }
   },
-  data() {
+  data () {
     return {
       active1: '',
       active2: '',
@@ -38,18 +38,18 @@ export default {
     }
   },
   computed: {
-    show() {
+    show () {
       return this.list.length
     },
-    data() {
+    data () {
       if (!this.show) {
         return this.list
       }
-      let list = [this.list[0]]
-      let children = []
-      let activeIndex = 0;
+      const list = [this.list[0]]
+      const children = []
+      let activeIndex = 0
       for (let i = 1; i < this.list.length; i++) {
-        let item = this.list[i]
+        const item = this.list[i]
         if (item.level > 3) {
           continue
         }
@@ -69,9 +69,9 @@ export default {
     }
   },
   watch: {
-    $route() {
-      let hash = decodeURI(this.$route.hash.slice(1))
-      let child = this.data.children.find(i => i.v === hash)
+    $route () {
+      const hash = decodeURI(this.$route.hash.slice(1))
+      const child = this.data.children.find(i => i.v === hash)
       if (child) {
         this.active1 = child.p
         this.active2 = child.v
@@ -81,20 +81,27 @@ export default {
       }
     }
   },
+  mounted () {
+    this.active1 = this.list[0] && this.list[0].anchor
+    this.$nextTick(function () {
+      this.setAnchorTop()
+      window.addEventListener('scroll', this.onScroll)
+    })
+  },
   methods: {
-    jump(anchor) {
+    jump (anchor) {
       window.removeEventListener('scroll', this.onScroll)
-      let jump = document.querySelector('#' + anchor)
-      let jumpTop = jump.offsetTop - 65
+      const jump = document.querySelector('#' + anchor)
+      const jumpTop = jump.offsetTop - 65
       let scrollTop =
                 document.documentElement.scrollTop || document.body.scrollTop
-      if (scrollTop - jumpTop == 0) {
+      if (scrollTop - jumpTop === 0) {
         return false
       }
-      let step = Math.abs(scrollTop - jumpTop) / 20
-      let add = jumpTop > scrollTop
+      const step = Math.abs(scrollTop - jumpTop) / 20
+      const add = jumpTop > scrollTop
       let timer
-      let fn = () => {
+      const fn = () => {
         if (add) {
           if (scrollTop < jumpTop && jumpTop - scrollTop > step) {
             scrollTop += step
@@ -107,33 +114,31 @@ export default {
             cancelAnimationFrame(timer)
             window.addEventListener('scroll', this.onScroll)
           }
+        } else if (scrollTop > jumpTop && scrollTop - jumpTop > step) {
+          scrollTop -= step
+          document.documentElement.scrollTop = scrollTop
+          document.body.scrollTop = scrollTop
+          timer = requestAnimationFrame(fn)
         } else {
-          if (scrollTop > jumpTop && scrollTop - jumpTop > step) {
-            scrollTop -= step
-            document.documentElement.scrollTop = scrollTop
-            document.body.scrollTop = scrollTop
-            timer = requestAnimationFrame(fn)
-          } else {
-            document.documentElement.scrollTop = jumpTop
-            document.body.scrollTop = jumpTop
-            cancelAnimationFrame(timer)
-            window.addEventListener('scroll', this.onScroll)
-          }
+          document.documentElement.scrollTop = jumpTop
+          document.body.scrollTop = jumpTop
+          cancelAnimationFrame(timer)
+          window.addEventListener('scroll', this.onScroll)
         }
       }
       timer = requestAnimationFrame(fn)
       this.$router.push('#' + anchor)
     },
-    setAnchorTop() {
-      let list = []
+    setAnchorTop () {
+      const list = []
       let p = ''
       for (let i = 0; i < this.list.length; i++) {
-        let item = this.list[i]
+        const item = this.list[i]
         if (item.level === 2) {
           p = item.anchor
         }
-        let jump = document.querySelector('#' + item.anchor)
-        let jumpTop = jump.offsetTop - 65
+        const jump = document.querySelector('#' + item.anchor)
+        const jumpTop = jump.offsetTop - 65
         list.push({
           p,
           top: jumpTop,
@@ -142,11 +147,10 @@ export default {
       }
       this.$set(this, 'anchor', list)
     },
-    getScrolled() {
-      let scrolled =
+    getScrolled () {
+      const scrolled =
                 document.documentElement.scrollTop || document.body.scrollTop
-      let anchor = []
-      let index;
+      let index
       for (let i = 0; i < this.anchor.length; i++) {
         if (this.anchor[i].top > scrolled) {
           index = i
@@ -166,10 +170,10 @@ export default {
         return this.anchor[this.anchor.length - 1]
       }
     },
-    onScroll() {
-      let scrolled =
+    onScroll () {
+      const scrolled =
                 document.documentElement.scrollTop || document.body.scrollTop
-      let anchors = this.getScrolled(scrolled)
+      const anchors = this.getScrolled(scrolled)
       if (anchors.p !== anchors.anchor) {
         this.active2 = anchors.anchor
       } else {
@@ -177,13 +181,6 @@ export default {
       }
       this.active1 = anchors.p || anchors.anchor
     }
-  },
-  mounted() {
-    this.active1 = this.list[0] && this.list[0].anchor
-    this.$nextTick(function () {
-      this.setAnchorTop()
-      window.addEventListener('scroll', this.onScroll)
-    })
   }
 }
 </script>

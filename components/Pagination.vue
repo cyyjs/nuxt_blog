@@ -1,10 +1,16 @@
 <template>
-  <div class="pagination" v-show="pageCount > 1">
-      <ul>
-          <li @click="prev" :class="{disabled: pageNo === 1}">上一页</li>
-          <li @click="$emit('change', i)" :key="i" v-for="i in nums" :class="{active: pageNo === i}">{{i}}</li>
-          <li @click="next" :class="{disabled: pageNo === pageCount}">下一页</li>
-      </ul>
+  <div v-show="pageCount > 1" class="pagination">
+    <ul>
+      <li :class="{disabled: pageNo === 1}" @click="prev">
+        上一页
+      </li>
+      <li v-for="i in nums" :key="i" :class="{active: pageNo === i}" @click="$emit('change', i)">
+        {{ i }}
+      </li>
+      <li :class="{disabled: pageNo === pageCount}" @click="next">
+        下一页
+      </li>
+    </ul>
   </div>
 </template>
 <script>
@@ -14,18 +20,24 @@ export default {
       type: Number,
       default: 1
     },
-    pageSize: Number,
-    total: Number
+    pageSize: {
+      type: Number,
+      default: 10
+    },
+    total: {
+      type: Number,
+      default: 0
+    }
   },
   computed: {
-    _pageSize() {
+    _pageSize () {
       return this.pageSize || 10
     },
-    pageCount() {
+    pageCount () {
       return Math.ceil((this.total || 0) / this._pageSize)
     },
-    nums() {
-      let s = []
+    nums () {
+      const s = []
       if (this.pageNo + 2 > this.pageCount) {
         for (
           let p = this.pageCount;
@@ -51,12 +63,12 @@ export default {
     }
   },
   methods: {
-    prev() {
+    prev () {
       if (this.pageNo > 1) {
         this.$emit('change', this.pageNo - 1)
       }
     },
-    next() {
+    next () {
       if (this.pageNo < this.pageCount) {
         this.$emit('change', this.pageNo + 1)
       }
@@ -109,4 +121,3 @@ export default {
     }
 }
 </style>
-

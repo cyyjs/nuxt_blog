@@ -1,10 +1,10 @@
 <template>
-    <footer>
+  <footer>
     <a href="https://github.com/cyyjs" target="_blank">
-        <img src="~assets/img/github.png" alt="" class="github">
+      <img src="~assets/img/github.png" alt="" class="github">
     </a>
     Copyright © 2018-present Cyyjs
-    </footer>
+  </footer>
 </template>
 <style scoped>
 footer {

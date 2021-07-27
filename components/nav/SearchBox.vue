@@ -1,26 +1,33 @@
 <template>
   <div class="search-box">
     <input
-      @input="change"
       placeholder="搜索..."
       aria-label="Search"
       :value="query"
       autocomplete="off"
       spellcheck="false"
+      @input="change"
       @focus="focused = true"
       @blur="focused = false"
       @keyup.enter="go(focusIndex)"
       @keyup.up="onUp"
-      @keyup.down="onDown">
-    <ul class="suggestions"
+      @keyup.down="onDown"
+    >
+    <ul
       v-if="showSuggestions"
-      @mouseleave="unfocus">
-      <li class="suggestion" v-for="(s, i) in suggestions" :key="s._id"
+      class="suggestions"
+      @mouseleave="unfocus"
+    >
+      <li
+        v-for="(s, i) in suggestions"
+        :key="s._id"
+        class="suggestion"
         :class="{ focused: i === focusIndex }"
         @mousedown="go(i)"
-        @mouseenter="focus(i)">
+        @mouseenter="focus(i)"
+      >
         <a href="javascript:;" @click.prevent>
-          <span class="page-title">{{ s.title}}</span>
+          <span class="page-title">{{ s.title }}</span>
         </a>
       </li>
     </ul>
@@ -28,22 +35,21 @@
 </template>
 
 <script>
-import axios from '~/plugins/axios'
-let timer = null
 export default {
-  data() {
+  data () {
     return {
       query: '',
       focused: false,
       focusIndex: 0,
-      list: []
+      list: [],
+      timer: null
     }
   },
   computed: {
-    showSuggestions() {
+    showSuggestions () {
       return this.focused && this.suggestions && this.suggestions.length
     },
-    suggestions() {
+    suggestions () {
       const query = this.query.trim().toLowerCase()
       if (!query) {
         return
@@ -52,15 +58,15 @@ export default {
     }
   },
   methods: {
-    async change(event) {
+    change (event) {
       this.query = event.target.value
       clearTimeout(this.timer)
       this.timer = setTimeout(async () => {
-        let {
+        const {
           data: {
-            data: { data }
+            data: { list }
           }
-        } = await axios.get('/blog/post', {
+        } = await this.$axios.get('/api/blog', {
           params: {
             pageNo: 1,
             pageSize: 5,
@@ -68,10 +74,10 @@ export default {
             title: this.query
           }
         })
-        this.list = data
+        this.list = list
       }, 500)
     },
-    onUp() {
+    onUp () {
       if (this.showSuggestions) {
         if (this.focusIndex > 0) {
           this.focusIndex--
@@ -80,7 +86,7 @@ export default {
         }
       }
     },
-    onDown() {
+    onDown () {
       if (this.showSuggestions) {
         if (this.focusIndex < this.suggestions.length - 1) {
           this.focusIndex++
@@ -89,17 +95,17 @@ export default {
         }
       }
     },
-    go(i) {
+    go (i) {
       if (this.suggestions[i]) {
         this.$router.push('/blog/' + this.suggestions[i]._id)
         this.query = ''
         this.focusIndex = 0
       }
     },
-    focus(i) {
+    focus (i) {
       this.focusIndex = i
     },
-    unfocus() {
+    unfocus () {
       this.focusIndex = -1
     }
   }

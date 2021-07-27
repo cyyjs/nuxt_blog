@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 export default axios.create({
-  baseURL: process.env.BASE_URL || "https://api.alibt.top"
-});
+  baseURL: process.env.BASE_URL || 'https://api.alibt.top'
+})

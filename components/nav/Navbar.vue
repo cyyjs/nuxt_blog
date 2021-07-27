@@ -1,31 +1,39 @@
 <template>
-    <header class="navbar">
-        <sidebar-button @toggle-sidebar="$emit('toggle-sidebar')"/>
-        <nuxt-link to="/">
-            <logo-img class="logo can-hide"/>
+  <header class="navbar">
+    <sidebar-button @toggle-sidebar="$emit('toggle-sidebar')" />
+    <nuxt-link to="/">
+      <logo-img class="logo can-hide" />
+    </nuxt-link>
+    <div class="links">
+      <search-box />
+      <nav class="nav-links can-hide">
+        <nuxt-link class="nav-item" to="/">
+          <i class="iconfont icon-zhuye" /> Home
         </nuxt-link>
-        <div class="links">
-            <search-box></search-box>
-            <nav class="nav-links can-hide">
-                <nuxt-link class="nav-item" to="/"><i class="iconfont icon-zhuye"></i> Home</nuxt-link>
-                <nuxt-link :class="['nav-item',activeClass]" to="/blog"><i class="iconfont icon-wenzhang1"></i> Blog</nuxt-link>
-                <nuxt-link class="nav-item" to="/favorite"><i class="iconfont icon-shoucang"></i> Favorite</nuxt-link>
-                <nuxt-link class="nav-item" to="/about"><i class="iconfont icon-wo"></i> About</nuxt-link>
-                <a class="nav-item" target="_blank" href="https://github.com/cyyjs"><i class="iconfont icon-st-github"></i> GitHub</a>
-                <switch-theme></switch-theme>
-            </nav>
-        </div>
-    </header>
+        <nuxt-link :class="['nav-item',activeClass]" to="/blog">
+          <i class="iconfont icon-wenzhang1" /> Blog
+        </nuxt-link>
+        <nuxt-link class="nav-item" to="/favorite">
+          <i class="iconfont icon-shoucang" /> Favorite
+        </nuxt-link>
+        <nuxt-link class="nav-item" to="/about">
+          <i class="iconfont icon-wo" /> About
+        </nuxt-link>
+        <a class="nav-item" target="_blank" href="https://github.com/cyyjs"><i class="iconfont icon-st-github" /> GitHub</a>
+        <switch-theme />
+      </nav>
+    </div>
+  </header>
 </template>
 <script>
+import LogoImg from './Logo'
 import SidebarButton from '~/components/nav/SidebarButton'
 import SearchBox from '~/components/nav/SearchBox'
 import SwitchTheme from '~/components/SwitchTheme'
-import LogoImg from './Logo'
 export default {
   components: { SidebarButton, SearchBox, SwitchTheme, LogoImg },
   computed: {
-    activeClass() {
+    activeClass () {
       return this.$route.path.startsWith('/blog')
         ? 'nuxt-link-exact-active'
         : ''
@@ -98,5 +106,3 @@ export default {
     }
 }
 </style>
-
-

@@ -1,10 +1,10 @@
-module.exports = {
+export default {
   /*
     ** Headers of the page
     */
   head: {
     title: 'Cyyjs',
-    titleTemplate: "%s - Cyyjs", // title is now "My Example App - Yay!"
+    titleTemplate: '%s - Cyyjs', // title is now "My Example App - Yay!"
     meta: [
       { charset: 'utf-8' },
       {
@@ -31,12 +31,12 @@ module.exports = {
     ],
     script: [
       // { src: '/js/drift.js', async: true, defer: true } // 在线聊天
-    ],
+    ]
   },
   css: [
     { src: '~assets/css/main.scss', lang: 'scss' } // 指定 scss 而非 sass
   ],
-  
+
   /*
     ** Customize the progress bar color
     */
@@ -52,34 +52,41 @@ module.exports = {
     { src: '~plugins/statistics.js', ssr: false }
     // { src: '~plugins/ba.js', ssr: false }
   ],
-  build: {
-    /*
-        ** Run ESLint on save
-        */
-    vendor: ['~/plugins/axios'],
-    extend(config, { isDev, isClient }) {
-      if (isDev && isClient) {
-        config.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /(node_modules)/
-        })
-      }
-    }
-  },
+  build: {},
   env: {
     baseUrl: process.env.BASE_URL
   },
   buildModules: [
-    '@nuxtjs/pwa',
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/pwa'
   ],
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios'
+  ],
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  axios: {
+    proxy: true // Can be also an object with default options
+  },
+
+  proxy: {
+    '/api/': {
+      target: process.env.BASE_URL || 'https://api.cyyjs.top',
+      pathRewrite: {
+        '^/api/': ''
+      }
+    }
+  },
   pwa: {
     manifest: {
       name: 'Cyyjs',
       short_name: 'Cyyjs',
       lang: 'zh',
-      display: 'minimal-ui',
+      display: 'minimal-ui'
     }
   }
 }

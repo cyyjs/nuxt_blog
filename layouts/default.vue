@@ -1,12 +1,12 @@
 <template>
   <div :class="pageClasses">
-    <navbar @toggle-sidebar="toggleSidebar"></navbar>
-    <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
-    <sidebar-left @toggle-sidebar="toggleSidebar"></sidebar-left>
+    <navbar @toggle-sidebar="toggleSidebar" />
+    <div class="sidebar-mask" @click="toggleSidebar(false)" />
+    <sidebar-left @toggle-sidebar="toggleSidebar" />
     <div class="container">
-        <nuxt/>
+      <nuxt />
     </div>
-    <m-footer></m-footer>
+    <m-footer />
   </div>
 </template>
 <script>
@@ -19,20 +19,20 @@ export default {
     SidebarLeft,
     MFooter
   },
-  data() {
+  data () {
     return {
       isSidebarOpen: false
     }
   },
   computed: {
-    pageClasses() {
+    pageClasses () {
       return {
         openpage: this.isSidebarOpen
       }
     }
   },
   methods: {
-    toggleSidebar(open) {
+    toggleSidebar (open) {
       if (typeof open === 'boolean') {
         this.isSidebarOpen = open
       } else {

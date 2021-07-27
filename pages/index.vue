@@ -1,29 +1,37 @@
 <template>
-    <section class="home">
-        <img class="head" src="https://i.alibt.top/img/head.jpg" alt="head">
-        <p class="about-btn">
-            <nuxt-link to="/about">About Me →</nuxt-link>
-        </p>
-        <div class="features">
-            <div class="feature">
-                <nuxt-link to="/blog">Blog</nuxt-link>
-                <p>日常工作和学习种总结的一些经验。</p>
-            </div>
-            <div class="feature">
-                <nuxt-link to="/favorite">Favorite</nuxt-link>
-                <p>一些网络收藏，工具、文章等</p>
-            </div>
-            <div class="feature">
-                <nuxt-link to="/project">Project</nuxt-link>
-                <p>在 github 中开源的项目</p>
-            </div>
-        </div>
-    </section>
+  <section class="home">
+    <img class="head" src="https://i.alibt.top/img/head.jpg" alt="head">
+    <p class="about-btn">
+      <nuxt-link to="/about">
+        About Me →
+      </nuxt-link>
+    </p>
+    <div class="features">
+      <div class="feature">
+        <nuxt-link to="/blog">
+          Blog
+        </nuxt-link>
+        <p>日常工作和学习种总结的一些经验。</p>
+      </div>
+      <div class="feature">
+        <nuxt-link to="/favorite">
+          Favorite
+        </nuxt-link>
+        <p>一些网络收藏，工具、文章等</p>
+      </div>
+      <div class="feature">
+        <nuxt-link to="/project">
+          Project
+        </nuxt-link>
+        <p>在 github 中开源的项目</p>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
-  head() {
+  head () {
     return {
       title: 'Home'
     }

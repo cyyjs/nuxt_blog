@@ -3,7 +3,9 @@
     <div class="page-content">
       <div class="page-right">
         <div class="tags-list">
-          <div class="title">标签列表</div>
+          <div class="title">
+            标签列表
+          </div>
           <ul>
             <li
               :class="['tags', tag == '' ? 'active' : '']"
@@ -12,10 +14,10 @@
               全部
             </li>
             <li
-              :class="['tags', tag == t ? 'active' : '']"
-              @click="changeTag(t)"
               v-for="t in tags"
               :key="t"
+              :class="['tags', tag == t ? 'active' : '']"
+              @click="changeTag(t)"
             >
               {{ t }}
             </li>
@@ -24,119 +26,113 @@
       </div>
       <div class="list-content">
         <div
-          class="item-card"
-          v-for="p in page.data"
-          @click="openUrl(p._id)"
+          v-for="p in page.list"
           :key="p._id"
+          class="item-card"
+          @click="openUrl(p._id)"
         >
           <h2>{{ p.title }}</h2>
           <div class="item-body">
-            <div class="item-content">{{ p.description }}</div>
+            <div class="item-content">
+              {{ p.description }}
+            </div>
             <div
-              class="item-img"
               v-if="p.banner"
+              class="item-img"
               :style="{ backgroundImage: 'url(' + p.banner + ')' }"
-            ></div>
+            />
           </div>
           <div class="card-footer">
             <span
+              v-for="t in p.tags"
+              :key="p._id + t"
               class="tags"
               @click.stop="changeTag(t)"
-              :key="p._id + t"
-              v-for="t in p.tags"
-              >{{ t }}</span
-            >
-            <span class="time"><i class="iconfont icon-riqi"></i>{{ $util.dateFormat(p.created) }}</span>
+            >{{ t }}</span>
+            <span class="time"><i class="iconfont icon-riqi" />{{ $util.dateFormat(p.created) }}</span>
           </div>
         </div>
         <pagination
-          :pageNo="pageNo"
+          :page-no="pageNo"
           :total="page.count"
           @change="changePage"
-        ></pagination>
+        />
       </div>
     </div>
-    <back-top></back-top>
+    <back-top />
   </div>
 </template>
 <script>
-import BackTop from "~/components/BackTop";
-import Pagination from "~/components/Pagination";
-import axios from "~/plugins/axios";
 export default {
-  components: {
-    BackTop,
-    Pagination,
-  },
-  async asyncData({ env, route, error }) {
-    let {
-      data: { data },
-    } = await axios.get("/blog/post?pageSize=10&status=1&sort=created");
-    let {
-      data: { data: tags },
-    } = await axios.get("/blog/tags");
+  async asyncData ({ $axios, error }) {
+    const {
+      data: { data }
+    } = await $axios.get('/api/blog?pageSize=10&status=1&sort=created')
+    const {
+      data: { data: tags }
+    } = await $axios.get('/api/blog/tags')
     if (!data) {
-      error();
+      error()
     }
     return {
       page: data,
-      tags,
-    };
+      tags
+    }
+  },
+  data () {
+    return {
+      tag: '',
+      pageNo: 1
+    }
   },
   head () {
     return {
       title: 'Blog'
     }
   },
-  data() {
-    return {
-      tag: "",
-      pageNo: 1,
-    };
-  },
   computed: {
-    pageSize() {
-      return 10;
+    pageSize () {
+      return 10
     },
-    pageList() {
-      return [{}];
+    pageList () {
+      return [{}]
     },
-    filterPageList() {
-      return [];
-    },
+    filterPageList () {
+      return []
+    }
   },
   methods: {
-    changePage(n) {
-      this.pageNo = n;
-      this.fetch();
+    changePage (n) {
+      this.pageNo = n
+      this.fetch()
     },
-    changeTag(t) {
-      this.tag = t;
-      this.pageNo = 1;
-      this.fetch();
+    changeTag (t) {
+      this.tag = t
+      this.pageNo = 1
+      this.fetch()
     },
-    async fetch() {
-      let {
-        data: { data },
-      } = await axios.get("/blog/post", {
+    async fetch () {
+      const {
+        data: { data }
+      } = await this.$axios.get('/api/blog', {
         params: {
           pageNo: this.pageNo,
           pageSize: this.pageSize,
           status: 1,
-          sort: "created",
-          tag: this.tag,
-        },
-      });
-      this.page = data;
+          sort: 'created',
+          tag: this.tag
+        }
+      })
+      this.page = data
     },
-    openUrl(id) {
+    openUrl (id) {
       const { href } = this.$router.resolve({
-        path: `/blog/${id}`,
-      });
-      window.open(href, "_blank");
-    },
-  },
-};
+        path: `/blog/${id}`
+      })
+      window.open(href, '_blank')
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

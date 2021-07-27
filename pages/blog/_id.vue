@@ -1,70 +1,65 @@
 <template>
-    <div class="post">
-        <toc :list="content.toc"></toc>
-        <div class="page">
-            <div class="page-head">
-                <h1>{{blog.title}}</h1>
-                <div class="page-head-footer">
-                    <span class="tags" v-for="tag in blog.tags" :key="tag">{{tag}}</span>
-                    <span class="time"><i class="iconfont icon-riqi"></i> {{$util.dateFormat(blog.created)}}</span>
-                </div>
-            </div>
+  <div class="post">
+    <nav-toc :list="content.toc" />
+    <div class="page">
+      <div class="page-head">
+        <h1>{{ blog.title }}</h1>
+        <div class="page-head-footer">
+          <span v-for="tag in blog.tags" :key="tag" class="tags">{{ tag }}</span>
+          <span class="time"><i class="iconfont icon-riqi" /> {{ $util.dateFormat(blog.created) }}</span>
+        </div>
+      </div>
 
-            <div class="content post-content">
-                <blockquote v-if="blog.source">
-                    <p>
-                        本文首发于个人博客
-                        <a href="https://cyyjs.top" target="_blank">Cyy’s Blog</a>
-                        <br>转载请注明出处
-                        <a
-                            :href="'https://cyyjs.top/blog/'+blog._id"
-                            target="_blank"
-                        >https://cyyjs.top/blog/{{blog._id}}</a>
-                    </p>
-                </blockquote>
-                <div v-html="content.content"></div>
-                <!-- <div class="wxcode" v-if="blog.source">
+      <div class="content post-content">
+        <blockquote v-if="blog.source">
+          <p>
+            本文首发于个人博客
+            <a href="https://cyyjs.top" target="_blank">Cyy’s Blog</a>
+            <br>转载请注明出处
+            <a
+              :href="'https://cyyjs.top/blog/'+blog._id"
+              target="_blank"
+            >https://cyyjs.top/blog/{{ blog._id }}</a>
+          </p>
+        </blockquote>
+
+        <!-- eslint-disable -->
+        <div v-html="content.content" />
+        <!-- <div class="wxcode" v-if="blog.source">
                 <img src="~assets/img/qrcode.jpg" alt="">
                 <p>
                     更多精彩，请关注我的公众号！
                 </p>
                 </div>-->
-                <div class="blog-nav">
-                    <a
-                        class="prev"
-                        :title="prev.title"
-                        :href="'/blog/'+prev._id"
-                        v-if="prev"
-                    >{{prev.title}}</a>
-                    <a
-                        class="next"
-                        :title="next.title"
-                        :href="'/blog/'+next._id"
-                        v-if="next"
-                    >{{next.title}}</a>
-                </div>
-                <div id="comment"></div>
-            </div>
-            <back-top></back-top>
+        <div class="blog-nav">
+          <a
+            v-if="prev"
+            class="prev"
+            :title="prev.title"
+            :href="'/blog/'+prev._id"
+          >{{ prev.title }}</a>
+          <a
+            v-if="next"
+            class="next"
+            :title="next.title"
+            :href="'/blog/'+next._id"
+          >{{ next.title }}</a>
         </div>
+        <div id="comment" />
+      </div>
+      <back-top />
     </div>
+  </div>
 </template>
 <script>
-import BackTop from '~/components/BackTop'
-import Toc from '~/components/nav/toc';
-import axios from '~/plugins/axios'
 import markdown from '~/plugins/md'
 
 export default {
   layout: 'blog',
-  components: {
-    BackTop,
-    Toc
-  },
-  async asyncData({ route, error }) {
-    let {
+  async asyncData ({ $axios, route, error }) {
+    const {
       data: { data }
-    } = await axios.get('/blog/post/' + route.params.id + '?guide=1')
+    } = await $axios.get('/api/blog/' + route.params.id + '?guide=1')
     if (!data._id) {
       error({ statusCode: 404 })
     }
@@ -77,36 +72,7 @@ export default {
       script: null
     }
   },
-  computed: {
-    content() {
-      let toc = []
-      let content = markdown.render(this.blog.content, {
-        tocCallback: function (tocMarkdown, tocArray, tocHtml) {
-          toc = tocArray
-        }
-      })
-      return {
-        content,
-        toc
-      }
-    },
-    prev() {
-      if (this.blog.link.prev._id) {
-        return this.blog.link.prev
-      }
-      return false
-    },
-    next() {
-      if (this.blog.link.next._id) {
-        return this.blog.link.next
-      }
-      return false
-    },
-    isDark () {
-      return this.$store.state.setting.themeIsDark
-    }
-  },
-  head() {
+  head () {
     return {
       title: this.blog.title,
       meta: [
@@ -123,26 +89,55 @@ export default {
       ]
     }
   },
+  computed: {
+    content () {
+      let toc = []
+      const content = markdown.render(this.blog.content, {
+        tocCallback (tocMarkdown, tocArray, tocHtml) {
+          toc = tocArray
+        }
+      })
+      return {
+        content,
+        toc
+      }
+    },
+    prev () {
+      if (this.blog.link.prev._id) {
+        return this.blog.link.prev
+      }
+      return false
+    },
+    next () {
+      if (this.blog.link.next._id) {
+        return this.blog.link.next
+      }
+      return false
+    },
+    isDark () {
+      return this.$store.state.setting.themeIsDark
+    }
+  },
   watch: {
-    isDark() {
+    isDark () {
       this.utterances()
     }
   },
   methods: {
-    utterances: function () {
-      let comment = document.getElementById('comment')
+    utterances () {
+      const comment = document.getElementById('comment')
       if (!comment) {
         return
       }
       if (this.script) {
-        while(comment.hasChildNodes()) {
+        while (comment.hasChildNodes()) {
           comment.removeChild(comment.firstChild)
         }
       }
       this.script = document.createElement('script')
       this.script.src = 'https://utteranc.es/client.js'
       this.script.setAttribute('repo', 'cyyjs/blog_comment')
-      this.script.setAttribute('theme', this.isDark ? 'github-dark': 'github-light')
+      this.script.setAttribute('theme', this.isDark ? 'github-dark' : 'github-light')
       this.script.setAttribute('issue-term', `${this.blog.title}`)
       this.script.setAttribute('crossorigin', 'anonymous')
       comment.appendChild(this.script)
@@ -190,5 +185,3 @@ export default {
     margin-top: 20px;
 }
 </style>
-
-

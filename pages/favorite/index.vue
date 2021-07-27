@@ -1,34 +1,32 @@
 <template>
-    <div class="page">
-        <div class="favorite">
-            <div v-for="(v, k) in dataMap" :key="k">
-                <h3>{{k}}</h3>
-                <div class="favorite-list">
-                    <div class="item-card" v-for="p in v" :key="p.url">
-                        <a target="_blank" :href="p.url">
-                            <div class="item-body">
-                                <div class="item-content">
-                                    <h4>{{p.title}}</h4>
-                                    <div style="height: 40px; overflow: hidden;">
-                                        {{p.description}}
-                                    </div>
-                                    <div class="card-footer">
-                                        <span class="tags" @click="changeTag(t)" :key="t" v-for="t in p.tags">{{t}}</span>
-                                    </div>
-                                </div>
-                                <div class="item-img" :style="{backgroundImage:'url('+p.banner+')'}"> </div>
-                            </div>
-                        </a>
-                    </div>
+  <div class="page">
+    <div class="favorite">
+      <div v-for="(v, k) in dataMap" :key="k">
+        <h3>{{ k }}</h3>
+        <div class="favorite-list">
+          <div v-for="p in v" :key="p.url" class="item-card">
+            <a target="_blank" :href="p.url">
+              <div class="item-body">
+                <div class="item-content">
+                  <h4>{{ p.title }}</h4>
+                  <div style="height: 40px; overflow: hidden;">
+                    {{ p.description }}
+                  </div>
+                  <div class="card-footer">
+                    <span v-for="t in p.tags" :key="t" class="tags" @click="changeTag(t)">{{ t }}</span>
+                  </div>
                 </div>
-            </div>
+                <div class="item-img" :style="{backgroundImage:'url('+p.banner+')'}" />
+              </div>
+            </a>
+          </div>
         </div>
-        <BackTop></BackTop>
+      </div>
     </div>
+    <BackTop />
+  </div>
 </template>
 <script>
-import axios from '~/plugins/axios'
-import BackTop from '~/components/BackTop'
 export default {
   props: {
     favoriteInput: {
@@ -36,45 +34,41 @@ export default {
       default: ''
     }
   },
-  components: {
-    BackTop
-  },
-  async asyncData({ env }) {
-    let {
+  async asyncData ({ $axios }) {
+    const {
       data: {
-        data: { data }
+        data: { list }
       }
-    } = await axios.get('/favorite')
-    let list = data || []
+    } = await $axios.get('/api/favorite?pageSize=-1')
     return {
       list
     }
   },
-  data() {
+  data () {
     return {}
   },
-  head() {
+  head () {
     return {
       title: 'Favorite'
     }
   },
   computed: {
-    oDataMap() {
-      let dataMap = {}
-      this.list.forEach(i => {
+    oDataMap () {
+      const dataMap = {}
+      this.list.forEach((i) => {
         dataMap[i.category] = dataMap[i.category] || []
         i.updated = this.$util.dateFormat(i.updated)
         dataMap[i.category].push(i)
       })
       return dataMap
     },
-    dataMap() {
-      let map = {}
+    dataMap () {
+      const map = {}
       if (!this.favoriteInput.length) {
         return this.oDataMap
       } else {
-        for (let k in this.oDataMap) {
-          let list = this.oDataMap[k].filter(i =>
+        for (const k in this.oDataMap) {
+          const list = this.oDataMap[k].filter(i =>
             i.title
               .toLocaleUpperCase()
               .includes(this.favoriteInput.toLocaleUpperCase())
@@ -85,20 +79,6 @@ export default {
         }
         return map
       }
-    }
-  },
-  methods: {
-    fetchData() {
-      this.$get('/favorite').then(({ data: { data } }) => {
-        let list = data || []
-        let dataMap = {}
-        list.forEach(i => {
-          dataMap[i.category] = dataMap[i.category] || []
-          i.updated = this.$util.dateFormat(i.updated)
-          dataMap[i.category].push(i)
-        })
-        this.oDataMap = dataMap
-      })
     }
   }
 }

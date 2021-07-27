@@ -3,7 +3,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  setDark(state, isDark) {
+  setDark (state, isDark) {
     state.themeIsDark = isDark
   }
 }

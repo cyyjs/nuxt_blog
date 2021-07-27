@@ -1,14 +1,14 @@
 <template>
   <div class="sidebar-button">
-    <i class="iconfont icon-menu icon toggle" @click="$emit('toggle-sidebar')"></i>
-    <switch-theme hide-text></switch-theme>
+    <i class="iconfont icon-menu icon toggle" @click="$emit('toggle-sidebar')" />
+    <switch-theme hide-text />
   </div>
 </template>
 <script>
-import SwitchTheme from '~/components/SwitchTheme';
+import SwitchTheme from '~/components/SwitchTheme'
 export default {
   components: { SwitchTheme },
-  data() {
+  data () {
     return {
       open: false
     }

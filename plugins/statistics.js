@@ -50,10 +50,10 @@ export default ({ app: { router }, store }) => {
         document.getElementById('baidu_hm').remove()
       }
     }
-    var hm = document.createElement('script')
+    const hm = document.createElement('script')
     hm.id = 'baidu_hm'
     hm.src = 'https://hm.baidu.com/hm.js?88c2ed27bf67e687fcc2b0a17c2bbbe0'
-    var s = document.getElementsByTagName('script')[0]
+    const s = document.getElementsByTagName('script')[0]
     s.parentNode.insertBefore(hm, s)
   })
 }
